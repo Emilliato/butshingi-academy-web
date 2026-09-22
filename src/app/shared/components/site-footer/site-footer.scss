@@ -35,18 +35,6 @@
 
 .footer__brand p { color: rgba(249, 242, 222, 0.65); max-width: 32ch; }
 
-.footer__socials { display: flex; gap: 10px; margin-top: 18px; }
-.footer__socials a {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(249, 242, 222, 0.08);
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-.footer__socials a:hover { background: var(--color-amber); transform: translateY(-2px); }
-
 .footer__col h4 {
   color: var(--color-cream-soft);
   font-size: 0.82rem;
