@@ -13,7 +13,7 @@ export interface SeoData {
 
 const SITE_NAME = 'S. Butshingi Academy';
 const SITE_URL = 'https://emilliato.github.io/butshingi-academy-web';
-const DEFAULT_IMAGE = '/images/learners-group.jpg';
+const DEFAULT_IMAGE = `${SITE_URL}/images/learners-group.jpg`;
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
@@ -26,7 +26,7 @@ export class SeoService {
   apply(data: SeoData): void {
     const fullTitle = data.title === SITE_NAME ? data.title : `${data.title} · ${SITE_NAME}`;
     const url = `${SITE_URL}${data.path ?? '/'}`;
-    const image = data.image ?? DEFAULT_IMAGE;
+    const image = this.absolutize(data.image ?? DEFAULT_IMAGE);
 
     this.titleService.setTitle(fullTitle);
 
@@ -66,6 +66,12 @@ export class SeoService {
 
   private setProperty(property: string, content: string): void {
     this.meta.updateTag({ property, content });
+  }
+
+  /** Turns a root-relative path (e.g. "/images/x.jpg") into a full absolute URL for OG/Twitter tags. */
+  private absolutize(image: string): string {
+    if (image.startsWith('http')) return image;
+    return `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`;
   }
 
   private setCanonical(url: string): void {
