@@ -312,5 +312,6 @@
 @media (max-width: 700px) {
   .stats__grid { grid-template-columns: repeat(2, 1fr); }
   .pillar-grid { grid-template-columns: 1fr; }
+  .life__grid { grid-template-columns: 1fr; }
   .news-teaser__grid { grid-template-columns: 1fr; }
 }
