@@ -314,4 +314,17 @@
   .pillar-grid { grid-template-columns: 1fr; }
   .life__grid { grid-template-columns: 1fr; }
   .news-teaser__grid { grid-template-columns: 1fr; }
+
+  .hero__visual { padding-top: 28px; }
+
+  .hero__card--float {
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    top: -22px;
+    padding: 12px 18px;
+  }
+
+  .hero__card--float strong { font-size: 1.6rem; }
+  .hero__card--float span { font-size: 0.72rem; max-width: 13ch; }
 }
