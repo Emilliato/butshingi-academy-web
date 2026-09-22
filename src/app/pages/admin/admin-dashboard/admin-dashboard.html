@@ -1,0 +1,83 @@
+<div class="admin-header">
+  <div>
+    <h1>Dashboard</h1>
+    <p>A snapshot of applications and news activity.</p>
+  </div>
+  <a routerLink="/admin/news/new" class="btn btn--primary btn--sm">+ New post</a>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="value">{{ applications.all().length }}</span>
+    <span class="label">Total applications</span>
+  </div>
+  <div class="stat-card">
+    <span class="value">{{ applications.pendingCount() }}</span>
+    <span class="label">Awaiting review</span>
+  </div>
+  <div class="stat-card">
+    <span class="value">{{ acceptedCount() }}</span>
+    <span class="label">Accepted learners</span>
+  </div>
+  <div class="stat-card">
+    <span class="value">{{ publishedCount() }}</span>
+    <span class="label">Published news posts</span>
+  </div>
+</div>
+
+<div class="dash-grid">
+  <div class="table-card">
+    <div class="table-card__head">
+      <h2>Recent applications</h2>
+      <a routerLink="/admin/applications">View all</a>
+    </div>
+    @if (recentApplications().length) {
+      <table class="data-table">
+        <thead>
+          <tr><th>Learner</th><th>Grade</th><th>Status</th><th>Submitted</th></tr>
+        </thead>
+        <tbody>
+          @for (app of recentApplications(); track app.id) {
+            <tr [routerLink]="['/admin/applications', app.id]" class="clickable-row">
+              <td>{{ app.learnerFirstName }} {{ app.learnerLastName }}</td>
+              <td>{{ app.gradeApplyingFor }}</td>
+              <td><span class="status-pill" [class]="'status-pill--' + app.status">{{ app.status.replace('-', ' ') }}</span></td>
+              <td>{{ app.submittedAt | date: 'mediumDate' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="empty-state"><p>No applications yet.</p></div>
+    }
+  </div>
+
+  <div class="table-card">
+    <div class="table-card__head">
+      <h2>Recent news</h2>
+      <a routerLink="/admin/news">View all</a>
+    </div>
+    @if (recentPosts().length) {
+      <table class="data-table">
+        <thead>
+          <tr><th>Title</th><th>Status</th><th>Updated</th></tr>
+        </thead>
+        <tbody>
+          @for (post of recentPosts(); track post.id) {
+            <tr [routerLink]="['/admin/news', post.id, 'edit']" class="clickable-row">
+              <td>{{ post.title }}</td>
+              <td>
+                <span class="status-pill" [class.status-pill--accepted]="post.published" [class.status-pill--submitted]="!post.published">
+                  {{ post.published ? 'Published' : 'Draft' }}
+                </span>
+              </td>
+              <td>{{ post.updatedAt | date: 'mediumDate' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="empty-state"><p>No posts yet.</p></div>
+    }
+  </div>
+</div>

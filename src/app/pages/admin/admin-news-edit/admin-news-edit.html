@@ -1,0 +1,77 @@
+<div class="admin-header">
+  <div>
+    <h1>{{ editing ? 'Edit post' : 'New post' }}</h1>
+    <p>{{ editing ? 'Update this news post.' : 'Write a new announcement, event or achievement.' }}</p>
+  </div>
+  <a routerLink="/admin/news" class="btn btn--ghost btn--sm">&larr; Back to news</a>
+</div>
+
+<form class="edit-form card" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="field">
+    <label for="title">Title *</label>
+    <input id="title" class="input" formControlName="title" />
+    @if (field('title').invalid && field('title').touched) {
+      <span class="error">Title must be at least 4 characters.</span>
+    }
+  </div>
+
+  <div class="grid-2">
+    <div class="field">
+      <label for="category">Category *</label>
+      <select id="category" class="input" formControlName="category">
+        @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+        }
+      </select>
+    </div>
+    <div class="field">
+      <label for="coverEmoji">Cover icon (fallback)</label>
+      <select id="coverEmoji" class="input" formControlName="coverEmoji">
+        @for (emoji of emojiOptions; track emoji) {
+          <option [value]="emoji">{{ emoji }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="coverImage">Cover photo path (optional)</label>
+    <input id="coverImage" class="input" formControlName="coverImage" placeholder="/images/my-photo.jpg" />
+    <span class="hint">Upload the photo into <code>public/images/</code> in the project, then reference it here. Leave blank to use the icon above instead.</span>
+  </div>
+
+  <div class="field">
+    <label for="author">Author</label>
+    <input id="author" class="input" formControlName="author" placeholder="e.g. Khanya Butshingi" />
+  </div>
+
+  <div class="field">
+    <label for="excerpt">Excerpt *</label>
+    <textarea id="excerpt" class="input" rows="2" formControlName="excerpt"></textarea>
+    <span class="hint">Short summary shown on news cards.</span>
+    @if (field('excerpt').invalid && field('excerpt').touched) {
+      <span class="error">Excerpt must be at least 10 characters.</span>
+    }
+  </div>
+
+  <div class="field">
+    <label for="body">Full story *</label>
+    <textarea id="body" class="input" rows="8" formControlName="body"></textarea>
+    <span class="hint">Separate paragraphs with a blank line.</span>
+    @if (field('body').invalid && field('body').touched) {
+      <span class="error">Story must be at least 20 characters.</span>
+    }
+  </div>
+
+  <div class="field checkbox-field">
+    <label>
+      <input type="checkbox" formControlName="published" />
+      Published (visible on the public site)
+    </label>
+  </div>
+
+  <div class="edit-form__actions">
+    <button type="submit" class="btn btn--primary">{{ saved() ? 'Saved ✓' : (editing ? 'Save changes' : 'Publish post') }}</button>
+    <a routerLink="/admin/news" class="btn btn--ghost">Cancel</a>
+  </div>
+</form>

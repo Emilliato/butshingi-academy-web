@@ -1,0 +1,13 @@
+{
+  "name": "S. Butshingi Academy",
+  "short_name": "Butshingi Academy",
+  "description": "Community-rooted academy in Mqonci, Chris Hani District, Eastern Cape.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9F2DE",
+  "theme_color": "#1E7A49",
+  "icons": [
+    { "src": "/images/logo.jpg", "sizes": "any", "type": "image/jpeg" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

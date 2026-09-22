@@ -1,0 +1,96 @@
+.footer {
+  background: var(--color-ink);
+  color: rgba(249, 242, 222, 0.75);
+  padding-block: 64px 28px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.6fr repeat(3, 1fr);
+  gap: 40px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-white);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.brand__mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand__text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand__text strong { color: var(--color-cream-soft); font-family: var(--font-heading); font-size: 1.05rem; }
+.brand__text small { font-size: 0.72rem; color: rgba(249, 242, 222, 0.55); }
+
+.footer__brand p { color: rgba(249, 242, 222, 0.65); max-width: 32ch; }
+
+.footer__socials { display: flex; gap: 10px; margin-top: 18px; }
+.footer__socials a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(249, 242, 222, 0.08);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.footer__socials a:hover { background: var(--color-amber); transform: translateY(-2px); }
+
+.footer__col h4 {
+  color: var(--color-cream-soft);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__col a,
+.footer__col p {
+  font-size: 0.92rem;
+  color: rgba(249, 242, 222, 0.68);
+  transition: color 0.2s ease;
+  margin: 0;
+}
+
+.footer__col a:hover { color: var(--color-amber); }
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(249, 242, 222, 0.1);
+  font-size: 0.8rem;
+  color: rgba(249, 242, 222, 0.45);
+}
+
+.footer__bottom p { margin: 0; }
+
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}

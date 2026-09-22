@@ -1,0 +1,80 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Contact us</span>
+    <h1>We'd love to hear from you.</h1>
+    <p class="page-hero__lead">Whether you're a parent, donor or community partner — reach out any way that suits you.</p>
+  </div>
+</section>
+
+<section class="section contact">
+  <div class="container contact__grid">
+    <div class="contact__info" appReveal>
+      <div class="info-card">
+        <span class="info-card__icon">📍</span>
+        <div>
+          <h3>Visit us</h3>
+          <p>Mqonci, Chris Hani District, Eastern Cape, South Africa</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <span class="info-card__icon">📞</span>
+        <div>
+          <h3>Call us</h3>
+          <p><a href="tel:0735875718">073 587 5718</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <span class="info-card__icon">✉️</span>
+        <div>
+          <h3>Email us</h3>
+          <p><a href="mailto:khanyabutshingi22@gmail.com">khanyabutshingi22@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <span class="info-card__icon">🏢</span>
+        <div>
+          <h3>Registered NPO</h3>
+          <p>Reg 2020/119065/07</p>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact__form" [formGroup]="form" (ngSubmit)="sendViaEmail()" appReveal [revealDelay]="120">
+      <h2>Send a message</h2>
+      <div class="field">
+        <label for="name">Your name *</label>
+        <input id="name" class="input" formControlName="name" />
+      </div>
+      <div class="field">
+        <label for="email">Your email *</label>
+        <input id="email" type="email" class="input" formControlName="email" />
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <select id="subject" class="input" formControlName="subject">
+          <option>General enquiry</option>
+          <option>Admissions question</option>
+          <option>Donations & sponsorship</option>
+          <option>Partnership proposal</option>
+          <option>Media / press</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">Message *</label>
+        <textarea id="message" class="input" rows="5" formControlName="message"></textarea>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block">Send message</button>
+      <p class="hint">Opens your email app with the message pre-filled to khanyabutshingi22&#64;gmail.com.</p>
+    </form>
+  </div>
+</section>
+
+<section class="section section--alt map-section">
+  <div class="container" appReveal>
+    <span class="eyebrow">Find us</span>
+    <h2>Mqonci, Chris Hani District.</h2>
+  </div>
+  <div class="container">
+    <app-google-map appReveal [revealDelay]="100" />
+  </div>
+</section>

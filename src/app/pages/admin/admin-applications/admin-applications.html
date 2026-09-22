@@ -1,0 +1,57 @@
+<div class="admin-header">
+  <div>
+    <h1>Applications</h1>
+    <p>{{ applications.all().length }} total &middot; {{ applications.pendingCount() }} awaiting review</p>
+  </div>
+</div>
+
+<div class="filters-bar">
+  <input
+    class="input search-input"
+    placeholder="Search by learner, guardian or reference..."
+    (input)="onSearch($any($event.target).value)"
+  />
+  <div class="filter-chips">
+    @for (status of statuses; track status) {
+      <button
+        type="button"
+        class="filter-chip"
+        [class.filter-chip--active]="statusFilter() === status"
+        (click)="setStatus(status)"
+      >{{ status === 'all' ? 'All' : status.replace('-', ' ') }}</button>
+    }
+  </div>
+</div>
+
+<div class="table-card">
+  @if (filtered().length) {
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Reference</th>
+          <th>Learner</th>
+          <th>Grade</th>
+          <th>Guardian</th>
+          <th>Status</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (app of filtered(); track app.id) {
+          <tr [routerLink]="['/admin/applications', app.id]" class="clickable-row">
+            <td><code>{{ app.referenceNumber }}</code></td>
+            <td>{{ app.learnerFirstName }} {{ app.learnerLastName }}</td>
+            <td>{{ app.gradeApplyingFor }}</td>
+            <td>{{ app.guardianName }}</td>
+            <td><span class="status-pill" [class]="'status-pill--' + app.status">{{ app.status.replace('-', ' ') }}</span></td>
+            <td>{{ app.submittedAt | date: 'mediumDate' }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="empty-state">
+      <p>No applications match your filters.</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,78 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">About the Academy</span>
+    <h1>Rooted in Mqonci. Building futures across the Chris Hani District.</h1>
+    <p class="page-hero__lead">
+      S. Butshingi Academy is a registered NPO (Reg 2020/119065/07) giving learners access to
+      quality education, appropriate resources and real developmental opportunity.
+    </p>
+  </div>
+</section>
+
+<section class="section vm">
+  <div class="container vm__grid">
+    <div class="vm-card" appReveal>
+      <span class="chip">Our vision</span>
+      <h2>Confident, skilled, responsible young people.</h2>
+      <p>To become a leading community-based institution that develops confident, skilled and responsible young people.</p>
+    </div>
+    <div class="vm-card" appReveal [revealDelay]="120">
+      <span class="chip chip--amber">Our mission</span>
+      <h2>Every learner reaching their full potential.</h2>
+      <p>To provide learners with quality education, appropriate learning resources, technology, life skills and developmental opportunities that enable them to reach their full potential.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt timeline-section">
+  <div class="container" appReveal>
+    <span class="eyebrow">Our journey</span>
+    <h2>From a community idea to a thriving academy.</h2>
+  </div>
+  <div class="container timeline">
+    @for (step of timeline; track step.year; let i = $index) {
+      <div class="timeline__item" appReveal [revealDelay]="i * 100">
+        <span class="timeline__dot"></span>
+        <div>
+          <h3>{{ step.year }}</h3>
+          <p>{{ step.copy }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section team">
+  <div class="container team__head" appReveal>
+    <span class="eyebrow">Leadership</span>
+    <h2>The team behind it.</h2>
+    <p>A small, hands-on team of directors and leads accountable to the families we serve.</p>
+  </div>
+
+  <div class="container team-photo" appReveal>
+    <img src="/images/leadership-team.jpg" alt="S. Butshingi Academy directors and leadership team" loading="lazy" />
+  </div>
+
+  <div class="container team__grid stagger">
+    @for (person of team; track person.name; let i = $index) {
+      <div class="team-card" appReveal [revealDelay]="(i % 3) * 90">
+        <span class="team-card__avatar">{{ person.initials }}</span>
+        <h3>{{ person.name }}</h3>
+        <p>{{ person.role }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section section--forest about-cta">
+  <div class="container about-cta__grid" appReveal>
+    <div>
+      <h2>Want to know more before you apply?</h2>
+      <p>Get in touch with our admissions team, or head straight to the intake application for next year.</p>
+    </div>
+    <div class="about-cta__actions">
+      <a routerLink="/admissions" class="btn btn--primary">Apply now</a>
+      <a routerLink="/contact" class="btn btn--ghost-light">Contact us</a>
+    </div>
+  </div>
+</section>

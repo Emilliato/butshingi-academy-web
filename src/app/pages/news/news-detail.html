@@ -1,0 +1,52 @@
+@if (post) {
+  <article class="section article">
+    <div class="container article__head" appReveal>
+      <a routerLink="/news" class="back-link">&larr; All news</a>
+      <span class="chip">{{ post.category }}</span>
+      <h1>{{ post.title }}</h1>
+      <div class="article__meta">
+        <span>{{ post.author }}</span>
+        <span class="dot"></span>
+        <time [attr.datetime]="post.publishedAt">{{ post.publishedAt | date: 'longDate' }}</time>
+      </div>
+    </div>
+
+    <div class="container article__cover" appReveal [revealDelay]="80">
+      @if (post.coverImage) {
+        <img [src]="post.coverImage" [alt]="post.title" />
+      } @else {
+        <span>{{ post.coverEmoji }}</span>
+      }
+    </div>
+
+    <div class="container article__body" appReveal [revealDelay]="120">
+      @for (para of paragraphs; track $index) {
+        <p>{{ para }}</p>
+      }
+    </div>
+  </article>
+
+  @if (related.length) {
+    <section class="section section--alt related">
+      <div class="container" appReveal>
+        <span class="eyebrow">Keep reading</span>
+        <h2>More from the Academy</h2>
+      </div>
+      <div class="container related__grid">
+        @for (item of related; track item.id) {
+          <a class="news-card" [routerLink]="['/news', item.slug]" appReveal>
+            @if (item.coverImage) {
+              <div class="news-card__photo">
+                <img [src]="item.coverImage" [alt]="item.title" loading="lazy" />
+              </div>
+            } @else {
+              <span class="news-card__emoji">{{ item.coverEmoji }}</span>
+            }
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.excerpt }}</p>
+          </a>
+        }
+      </div>
+    </section>
+  }
+}

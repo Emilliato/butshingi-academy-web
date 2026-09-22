@@ -1,0 +1,38 @@
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a routerLink="/" class="admin-sidebar__brand">
+      <span class="mark"><img src="/images/logo.jpg" alt="S. Butshingi Academy logo" /></span>
+      <span>Butshingi<br /><small>Admin Panel</small></span>
+    </a>
+
+    <nav class="admin-nav">
+      <a routerLink="/admin/dashboard" routerLinkActive="active">
+        <span class="ico">🏠</span> Dashboard
+      </a>
+      <a routerLink="/admin/news" routerLinkActive="active">
+        <span class="ico">📰</span> News
+      </a>
+      <a routerLink="/admin/applications" routerLinkActive="active">
+        <span class="ico">🎓</span> Applications
+        @if (applications.pendingCount() > 0) {
+          <span class="badge">{{ applications.pendingCount() }}</span>
+        }
+      </a>
+    </nav>
+
+    <div class="admin-sidebar__footer">
+      <a routerLink="/" class="view-site">↗ View live site</a>
+      <div class="user">
+        <span class="avatar">{{ (auth.currentUser() || 'A').charAt(0).toUpperCase() }}</span>
+        <div class="user__meta">
+          <strong>{{ auth.currentUser() }}</strong>
+          <button type="button" (click)="logout()">Sign out</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="admin-main">
+    <router-outlet />
+  </div>
+</div>

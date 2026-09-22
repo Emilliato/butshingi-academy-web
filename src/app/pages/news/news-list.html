@@ -1,0 +1,49 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">News &amp; announcements</span>
+    <h1>What's happening at the Academy.</h1>
+    <p class="page-hero__lead">Events, achievements and updates from our learners, educators and community.</p>
+  </div>
+</section>
+
+<section class="section news-page">
+  <div class="container">
+    <div class="news-filters" appReveal>
+      @for (cat of categories; track cat) {
+        <button
+          type="button"
+          class="filter-chip"
+          [class.filter-chip--active]="activeCategory() === cat"
+          (click)="setCategory(cat)"
+        >{{ cat }}</button>
+      }
+    </div>
+
+    @if (filtered().length) {
+      <div class="news-grid stagger">
+        @for (post of filtered(); track post.id; let i = $index) {
+          <a class="news-card" [routerLink]="['/news', post.slug]" appReveal [revealDelay]="(i % 3) * 90">
+            @if (post.coverImage) {
+              <div class="news-card__photo">
+                <img [src]="post.coverImage" [alt]="post.title" loading="lazy" />
+              </div>
+            } @else {
+              <span class="news-card__emoji">{{ post.coverEmoji }}</span>
+            }
+            <span class="chip">{{ post.category }}</span>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.excerpt }}</p>
+            <div class="news-card__meta">
+              <span>{{ post.author }}</span>
+              <time [attr.datetime]="post.publishedAt">{{ post.publishedAt | date: 'mediumDate' }}</time>
+            </div>
+          </a>
+        }
+      </div>
+    } @else {
+      <div class="empty-state" appReveal>
+        <p>No posts in this category yet — check back soon.</p>
+      </div>
+    }
+  </div>
+</section>

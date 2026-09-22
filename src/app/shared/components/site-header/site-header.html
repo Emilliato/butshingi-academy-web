@@ -1,0 +1,36 @@
+<header class="header" [ngClass]="{ 'header--scrolled': scrolled(), 'header--open': menuOpen() }">
+  <div class="container header__bar">
+    <a routerLink="/" class="brand" (click)="closeMenu()">
+      <span class="brand__mark"><img src="/images/logo.jpg" alt="S. Butshingi Academy logo" /></span>
+      <span class="brand__text">
+        <strong>S. Butshingi</strong>
+        <small>Academy</small>
+      </span>
+    </a>
+
+    <nav class="nav" [class.nav--open]="menuOpen()">
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="nav__link--active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav__link"
+          (click)="closeMenu()"
+        >{{ link.label }}</a>
+      }
+      <a routerLink="/admissions" class="btn btn--primary btn--sm nav__cta" (click)="closeMenu()">
+        Apply for {{ nextIntakeYear }} intake
+      </a>
+    </nav>
+
+    <button
+      class="burger"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle navigation menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

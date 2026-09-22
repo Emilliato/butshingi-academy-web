@@ -1,0 +1,53 @@
+<div class="admin-header">
+  <div>
+    <h1>News</h1>
+    <p>Publish announcements, events and achievements to the public site.</p>
+  </div>
+  <a routerLink="/admin/news/new" class="btn btn--primary btn--sm">+ New post</a>
+</div>
+
+<div class="table-card">
+  @if (news.all().length) {
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Updated</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (post of news.all(); track post.id) {
+          <tr>
+            <td>
+              <strong>{{ post.coverEmoji }} {{ post.title }}</strong>
+            </td>
+            <td>{{ post.category }}</td>
+            <td>
+              <span
+                class="status-pill"
+                [class.status-pill--accepted]="post.published"
+                [class.status-pill--submitted]="!post.published"
+              >{{ post.published ? 'Published' : 'Draft' }}</span>
+            </td>
+            <td>{{ post.updatedAt | date: 'mediumDate' }}</td>
+            <td class="row-actions">
+              <button type="button" class="btn btn--ghost btn--sm" (click)="togglePublish(post.id, post.published)">
+                {{ post.published ? 'Unpublish' : 'Publish' }}
+              </button>
+              <a [routerLink]="['/admin/news', post.id, 'edit']" class="icon-btn" title="Edit">✏️</a>
+              <button type="button" class="icon-btn icon-btn--danger" title="Delete" (click)="remove(post.id, post.title)">🗑️</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="empty-state">
+      <p>No news posts yet.</p>
+      <a routerLink="/admin/news/new" class="btn btn--primary btn--sm">Create your first post</a>
+    </div>
+  }
+</div>

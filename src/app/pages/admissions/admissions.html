@@ -1,0 +1,196 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Admissions</span>
+    <h1>Apply for the {{ nextIntakeYear }} intake.</h1>
+    <p class="page-hero__lead">
+      Places are limited. Complete the form below and our admissions team will contact your
+      guardian directly to confirm placement and next steps.
+    </p>
+  </div>
+</section>
+
+<section class="section steps">
+  <div class="container steps__grid stagger">
+    @for (step of steps; track step.title; let i = $index) {
+      <div class="step-card" appReveal [revealDelay]="i * 90">
+        <span class="step-card__num">{{ i + 1 }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.copy }}</p>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section section--alt application">
+  <div class="container application__wrap">
+    @if (submitted(); as app) {
+      <div class="success-card" appReveal>
+        <span class="success-card__icon">✅</span>
+        <h2>Application received!</h2>
+        <p>
+          Thank you, {{ app.guardianName }}. We've recorded your application for
+          <strong>{{ app.learnerFirstName }} {{ app.learnerLastName }}</strong>
+          ({{ app.gradeApplyingFor }}, {{ app.intakeYear }} intake).
+        </p>
+        <div class="success-card__ref">
+          <span>Your reference number</span>
+          <strong>{{ app.referenceNumber }}</strong>
+        </div>
+        <p class="success-card__note">
+          Keep this reference handy — our team will call or email you on
+          <strong>{{ app.guardianPhone }}</strong> / <strong>{{ app.guardianEmail }}</strong> soon.
+        </p>
+        <div class="success-card__actions">
+          <a routerLink="/" class="btn btn--primary">Back to home</a>
+          <button type="button" class="btn btn--ghost" (click)="startNewApplication()">
+            Submit another application
+          </button>
+        </div>
+      </div>
+    } @else {
+      <form class="app-form" [formGroup]="form" (ngSubmit)="submit()" appReveal>
+        <h2>Intake application form</h2>
+        <p class="app-form__lead">Fields marked * are required.</p>
+
+        <fieldset>
+          <legend>Learner details</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="learnerFirstName">First name *</label>
+              <input id="learnerFirstName" class="input" formControlName="learnerFirstName" />
+              @if (field('learnerFirstName').invalid && field('learnerFirstName').touched) {
+                <span class="error">Please enter the learner's first name.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="learnerLastName">Last name *</label>
+              <input id="learnerLastName" class="input" formControlName="learnerLastName" />
+              @if (field('learnerLastName').invalid && field('learnerLastName').touched) {
+                <span class="error">Please enter the learner's last name.</span>
+              }
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="field">
+              <label for="learnerDob">Date of birth *</label>
+              <input id="learnerDob" type="date" class="input" formControlName="learnerDob" />
+              @if (field('learnerDob').invalid && field('learnerDob').touched) {
+                <span class="error">Date of birth is required.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="learnerGender">Gender *</label>
+              <select id="learnerGender" class="input" formControlName="learnerGender">
+                <option>Female</option>
+                <option>Male</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="gradeApplyingFor">Grade applying for *</label>
+              <select id="gradeApplyingFor" class="input" formControlName="gradeApplyingFor">
+                <option value="" disabled>Select a grade</option>
+                @for (grade of grades; track grade) {
+                  <option [value]="grade">{{ grade }}</option>
+                }
+              </select>
+              @if (field('gradeApplyingFor').invalid && field('gradeApplyingFor').touched) {
+                <span class="error">Please select a grade.</span>
+              }
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="homeLanguage">Home language *</label>
+              <input id="homeLanguage" class="input" formControlName="homeLanguage" placeholder="e.g. isiXhosa" />
+              @if (field('homeLanguage').invalid && field('homeLanguage').touched) {
+                <span class="error">Please enter the learner's home language.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="previousSchool">Previous / current school</label>
+              <input id="previousSchool" class="input" formControlName="previousSchool" />
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Guardian details</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="guardianName">Full name *</label>
+              <input id="guardianName" class="input" formControlName="guardianName" />
+              @if (field('guardianName').invalid && field('guardianName').touched) {
+                <span class="error">Guardian name is required.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="guardianRelationship">Relationship to learner *</label>
+              <input id="guardianRelationship" class="input" formControlName="guardianRelationship" placeholder="e.g. Mother, Grandfather" />
+              @if (field('guardianRelationship').invalid && field('guardianRelationship').touched) {
+                <span class="error">Please tell us the relationship to the learner.</span>
+              }
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="guardianPhone">Phone number *</label>
+              <input id="guardianPhone" class="input" formControlName="guardianPhone" placeholder="073 587 5718" />
+              @if (field('guardianPhone').invalid && field('guardianPhone').touched) {
+                <span class="error">Please enter a valid phone number.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="guardianEmail">Email address *</label>
+              <input id="guardianEmail" type="email" class="input" formControlName="guardianEmail" />
+              @if (field('guardianEmail').invalid && field('guardianEmail').touched) {
+                <span class="error">Please enter a valid email address.</span>
+              }
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="homeAddress">Home address *</label>
+            <textarea id="homeAddress" class="input" formControlName="homeAddress" rows="2"></textarea>
+            @if (field('homeAddress').invalid && field('homeAddress').touched) {
+              <span class="error">Home address is required.</span>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Additional information</legend>
+          <div class="field checkbox-field">
+            <label>
+              <input type="checkbox" formControlName="hasSpecialNeeds" />
+              This learner has additional learning or health needs we should know about
+            </label>
+          </div>
+
+          @if (field('hasSpecialNeeds').value) {
+            <div class="field">
+              <label for="specialNeedsDetails">Please give details</label>
+              <textarea id="specialNeedsDetails" class="input" formControlName="specialNeedsDetails" rows="2"></textarea>
+            </div>
+          }
+
+          <div class="field">
+            <label for="motivation">Why would you like your child to join S. Butshingi Academy? *</label>
+            <textarea id="motivation" class="input" formControlName="motivation" rows="4"></textarea>
+            <span class="hint">Minimum 20 characters.</span>
+            @if (field('motivation').invalid && field('motivation').touched) {
+              <span class="error">Please tell us a little more (at least 20 characters).</span>
+            }
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting()">
+          {{ submitting() ? 'Submitting…' : 'Submit application' }}
+        </button>
+      </form>
+    }
+  </div>
+</section>

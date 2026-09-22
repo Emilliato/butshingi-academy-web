@@ -1,0 +1,101 @@
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.phase-card {
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+
+.phase-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+.phase-card h3 { margin: 14px 0 8px; font-size: 1.1rem; }
+.phase-card p { margin: 0; font-size: 0.88rem; }
+
+.subjects > .container:first-child { margin-bottom: 36px; }
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.subject-card {
+  display: flex;
+  gap: 16px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  border: 1px solid var(--border-subtle);
+}
+
+.subject-card__icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.subject-card h3 { font-size: 1rem; margin-bottom: 6px; }
+.subject-card p { margin: 0; font-size: 0.86rem; }
+
+.support__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+}
+
+.support__intro { max-width: 34ch; }
+
+.support__photo {
+  margin-top: 24px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.support__photo img { width: 100%; display: block; aspect-ratio: 4 / 5; object-fit: cover; }
+
+.support__list { display: flex; flex-direction: column; gap: 22px; }
+
+.support__item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.support__item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.support__num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--color-amber-dark);
+}
+
+.support__item h3 { font-size: 1rem; margin-bottom: 4px; }
+.support__item p { margin: 0; font-size: 0.9rem; }
+
+.academics-cta__grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.academics-cta__grid h2 { color: var(--color-cream-soft); margin: 0; }
+
+@media (max-width: 1000px) {
+  .phase-grid { grid-template-columns: repeat(2, 1fr); }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); }
+  .support__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .phase-grid { grid-template-columns: 1fr; }
+  .subject-grid { grid-template-columns: 1fr; }
+}

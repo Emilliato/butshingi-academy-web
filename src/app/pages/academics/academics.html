@@ -1,0 +1,71 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Academics</span>
+    <h1>A structured path from Foundation Phase to Matric.</h1>
+    <p class="page-hero__lead">
+      Every learner follows a phase-appropriate programme backed by academic support, digital
+      learning and life skills — with a 92% average academic performance to show for it.
+    </p>
+  </div>
+</section>
+
+<section class="section phases">
+  <div class="container phase-grid stagger">
+    @for (phase of phases; track phase.name; let i = $index) {
+      <article class="phase-card" appReveal [revealDelay]="i * 90">
+        <span class="chip">{{ phase.grades }}</span>
+        <h3>{{ phase.name }}</h3>
+        <p>{{ phase.copy }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section section--alt subjects">
+  <div class="container" appReveal>
+    <span class="eyebrow">What we teach</span>
+    <h2>Core subjects and skills.</h2>
+  </div>
+  <div class="container subject-grid stagger">
+    @for (subject of subjects; track subject.title; let i = $index) {
+      <div class="subject-card" appReveal [revealDelay]="(i % 3) * 90">
+        <span class="subject-card__icon">{{ subject.icon }}</span>
+        <div>
+          <h3>{{ subject.title }}</h3>
+          <p>{{ subject.copy }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section support">
+  <div class="container support__grid">
+    <div class="support__intro" appReveal>
+      <span class="eyebrow">Academic support</span>
+      <h2>We don't let learners fall behind.</h2>
+      <p>Regular assessment means we catch gaps early and respond with targeted, practical support.</p>
+      <div class="support__photo">
+        <img src="/images/certificate-award-2.jpg" alt="Learners celebrating their certificates of achievement" loading="lazy" />
+      </div>
+    </div>
+    <div class="support__list stagger">
+      @for (item of supports; track item.title; let i = $index) {
+        <div class="support__item" appReveal [revealDelay]="i * 90">
+          <span class="support__num">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <div>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.copy }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--ink academics-cta">
+  <div class="container academics-cta__grid" appReveal>
+    <h2>Ready to enrol your child?</h2>
+    <a routerLink="/admissions" class="btn btn--primary">Apply for next intake</a>
+  </div>
+</section>

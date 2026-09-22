@@ -1,0 +1,81 @@
+@if (application; as app) {
+  <div class="admin-header">
+    <div>
+      <a routerLink="/admin/applications" class="back-link">&larr; All applications</a>
+      <h1>{{ app.learnerFirstName }} {{ app.learnerLastName }}</h1>
+      <p><code>{{ app.referenceNumber }}</code> &middot; Submitted {{ app.submittedAt | date: 'medium' }}</p>
+    </div>
+    <span class="status-pill status-pill--lg" [class]="'status-pill--' + app.status">{{ app.status.replace('-', ' ') }}</span>
+  </div>
+
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="card detail-section">
+        <h2>Learner details</h2>
+        <dl>
+          <div><dt>Full name</dt><dd>{{ app.learnerFirstName }} {{ app.learnerLastName }}</dd></div>
+          <div><dt>Date of birth</dt><dd>{{ app.learnerDob | date: 'mediumDate' }}</dd></div>
+          <div><dt>Gender</dt><dd>{{ app.learnerGender }}</dd></div>
+          <div><dt>Grade applying for</dt><dd>{{ app.gradeApplyingFor }} ({{ app.intakeYear }} intake)</dd></div>
+          <div><dt>Home language</dt><dd>{{ app.homeLanguage }}</dd></div>
+          <div><dt>Previous school</dt><dd>{{ app.previousSchool || '—' }}</dd></div>
+        </dl>
+      </div>
+
+      <div class="card detail-section">
+        <h2>Guardian details</h2>
+        <dl>
+          <div><dt>Name</dt><dd>{{ app.guardianName }}</dd></div>
+          <div><dt>Relationship</dt><dd>{{ app.guardianRelationship }}</dd></div>
+          <div><dt>Phone</dt><dd><a [href]="'tel:' + app.guardianPhone">{{ app.guardianPhone }}</a></dd></div>
+          <div><dt>Email</dt><dd><a [href]="'mailto:' + app.guardianEmail">{{ app.guardianEmail }}</a></dd></div>
+          <div class="span-2"><dt>Home address</dt><dd>{{ app.homeAddress }}</dd></div>
+        </dl>
+      </div>
+
+      @if (app.hasSpecialNeeds) {
+        <div class="card detail-section">
+          <h2>Additional needs</h2>
+          <p>{{ app.specialNeedsDetails || 'Flagged, no further details provided.' }}</p>
+        </div>
+      }
+
+      <div class="card detail-section">
+        <h2>Motivation</h2>
+        <p>{{ app.motivation }}</p>
+      </div>
+    </div>
+
+    <div class="detail-side">
+      <div class="card">
+        <h2>Update status</h2>
+        <div class="status-options">
+          @for (status of statuses; track status) {
+            <button
+              type="button"
+              class="status-option"
+              [class.status-option--active]="app.status === status"
+              (click)="setStatus(status)"
+            >{{ status.replace('-', ' ') }}</button>
+          }
+        </div>
+
+        <div class="field">
+          <label for="notes">Admin notes</label>
+          <textarea id="notes" class="input" rows="4" [(ngModel)]="notes" [ngModelOptions]="{ standalone: true }"></textarea>
+        </div>
+        <button type="button" class="btn btn--secondary btn--block" (click)="saveNotes()">
+          {{ saved() ? 'Saved ✓' : 'Save notes' }}
+        </button>
+
+        @if (app.reviewedAt) {
+          <p class="hint reviewed-hint">Last reviewed {{ app.reviewedAt | date: 'medium' }}</p>
+        }
+      </div>
+
+      <button type="button" class="btn btn--ghost btn--block danger-btn" (click)="remove()">
+        Delete application
+      </button>
+    </div>
+  </div>
+}

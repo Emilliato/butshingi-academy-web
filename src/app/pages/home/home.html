@@ -1,0 +1,146 @@
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="container hero__grid">
+    <div class="hero__copy" appReveal>
+      <span class="eyebrow">Mqonci &middot; Chris Hani District &middot; Registered NPO</span>
+      <h1>Building a better world, one student at a time.</h1>
+      <p class="hero__lead">
+        S. Butshingi Academy is a community-rooted school giving learners in rural Eastern Cape
+        access to quality education, digital learning and real developmental opportunity.
+      </p>
+      <div class="hero__actions">
+        <a routerLink="/admissions" class="btn btn--primary">Apply for {{ nextIntakeYear }} intake</a>
+        <a href="#approach" class="btn btn--ghost">Our approach</a>
+      </div>
+      <div class="hero__trust">
+        <span>NPO Reg 2020/119065/07</span>
+        <span class="dot"></span>
+        <span>4 annual award luncheons hosted</span>
+      </div>
+    </div>
+
+    <div class="hero__visual" appReveal [revealDelay]="120">
+      <div class="hero__card hero__card--main">
+        <img src="/images/learners-group.jpg" alt="S. Butshingi Academy learners and staff" class="hero__card-photo" />
+        <p>&ldquo;Every rand goes straight to the classroom.&rdquo;</p>
+      </div>
+      <div class="hero__card hero__card--float">
+        <strong appCountUp [countTo]="92" suffix="%"></strong>
+        <span>average academic performance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats section">
+  <div class="container stats__grid stagger">
+    @for (stat of stats; track stat.label; let i = $index) {
+      <div class="stats__item" appReveal [revealDelay]="i * 90">
+        <strong appCountUp [countTo]="stat.value" [suffix]="stat.suffix"></strong>
+        <span>{{ stat.label }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<section id="approach" class="section section--alt approach">
+  <div class="container approach__intro" appReveal>
+    <span class="eyebrow">Our approach</span>
+    <h2>Six ways we grow every learner.</h2>
+    <p class="approach__lead">
+      Our vision is to become a leading community-based institution that develops confident, skilled and
+      responsible young people — our mission is to give every learner the resources, technology, life
+      skills and support to reach their full potential.
+    </p>
+  </div>
+
+  <div class="container pillar-grid stagger">
+    @for (pillar of pillars; track pillar.title; let i = $index) {
+      <article class="pillar-card" appReveal [revealDelay]="(i % 3) * 90">
+        <span class="pillar-card__icon">{{ pillar.icon }}</span>
+        <h3>{{ pillar.title }}</h3>
+        <p>{{ pillar.copy }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section life">
+  <div class="container life__intro" appReveal>
+    <span class="eyebrow">Life beyond the classroom</span>
+    <h2>Sport, celebration and community.</h2>
+  </div>
+
+  <div class="container life__grid">
+    <article class="life-card" appReveal>
+      <div class="life-card__media">
+        <img src="/images/football-team.jpg" alt="The Academy football team on the field" loading="lazy" />
+      </div>
+      <div class="life-card__body">
+        <span class="chip">Sport</span>
+        <h3>Our football team</h3>
+        <p>The Academy football team builds the discipline, teamwork and belonging that show up directly in our attendance and retention figures.</p>
+      </div>
+    </article>
+
+    <article class="life-card" appReveal [revealDelay]="120">
+      <div class="life-card__media">
+        <img src="/images/trophies.jpg" alt="Trophies and awards from S. Butshingi Academy" loading="lazy" />
+      </div>
+      <div class="life-card__body">
+        <span class="chip chip--amber">Awards</span>
+        <h3>The annual luncheon</h3>
+        <p>Four annual luncheons hosted so far — certificates for top-performing learners, with families and community leaders sharing the moment.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+@if (latestNews.length) {
+  <section class="section section--alt news-teaser">
+    <div class="container news-teaser__head" appReveal>
+      <div>
+        <span class="eyebrow">Latest from the Academy</span>
+        <h2>News &amp; announcements.</h2>
+      </div>
+      <a routerLink="/news" class="btn btn--ghost">All news</a>
+    </div>
+
+    <div class="container news-teaser__grid stagger">
+      @for (post of latestNews; track post.id; let i = $index) {
+        <a class="news-card" [routerLink]="['/news', post.slug]" appReveal [revealDelay]="i * 90">
+          @if (post.coverImage) {
+            <div class="news-card__photo">
+              <img [src]="post.coverImage" [alt]="post.title" loading="lazy" />
+            </div>
+          } @else {
+            <span class="news-card__emoji">{{ post.coverEmoji }}</span>
+          }
+          <span class="chip">{{ post.category }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt }}</p>
+          <time [attr.datetime]="post.publishedAt">{{ post.publishedAt | date: 'longDate' }}</time>
+        </a>
+      }
+    </div>
+  </section>
+}
+
+<section class="section section--forest involved">
+  <div class="container involved__grid" appReveal>
+    <div>
+      <span class="eyebrow" style="color: var(--color-amber)">Get involved</span>
+      <h2>Fund resources, sponsor digital learning, or partner with us.</h2>
+      <p>Every rand goes straight to the classroom — support learning resources, technology, mentorship and in-kind partnerships.</p>
+      <div class="involved__actions">
+        <a href="tel:0735875718" class="btn btn--primary">Make a donation</a>
+        <a href="mailto:khanyabutshingi22@gmail.com" class="btn btn--ghost-light">Partner with us</a>
+      </div>
+    </div>
+    <div class="involved__card">
+      <h3>Applying for {{ nextIntakeYear }}?</h3>
+      <p>Places are limited. Complete our online intake application and our admissions team will contact you directly.</p>
+      <a routerLink="/admissions" class="btn btn--secondary btn--block">Start application</a>
+    </div>
+  </div>
+</section>
