@@ -6,6 +6,16 @@
   <a routerLink="/admin/news/new" class="btn btn--primary btn--sm">+ New post</a>
 </div>
 
+@if (error()) {
+  <div class="empty-state">
+    <p>{{ error() }}</p>
+    <button type="button" class="btn btn--secondary" (click)="reload()">Retry</button>
+  </div>
+} @else if (loading()) {
+  <div class="empty-state">
+    <p>Loading news posts…</p>
+  </div>
+} @else {
 <div class="table-card">
   @if (news.all().length) {
     <table class="data-table">
@@ -51,3 +61,4 @@
     </div>
   }
 </div>
+}

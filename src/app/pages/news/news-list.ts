@@ -18,6 +18,7 @@ export class NewsListComponent implements OnInit {
 
   readonly activeCategory = signal<string>('All');
   readonly categories = ['All', 'Announcement', 'Event', 'Achievement', 'Community'];
+  readonly loading = signal(true);
 
   readonly filtered = computed(() => {
     const cat = this.activeCategory();
@@ -30,6 +31,11 @@ export class NewsListComponent implements OnInit {
       title: 'News',
       description: 'Announcements, events and achievements from S. Butshingi Academy in Mqonci, Eastern Cape.',
       path: '/news',
+    });
+
+    this.news.loadPublished().subscribe({
+      next: () => this.loading.set(false),
+      error: () => this.loading.set(false),
     });
   }
 

@@ -67,6 +67,8 @@ export class HomeComponent implements OnInit {
       },
       areaServed: 'Chris Hani District, Eastern Cape',
     });
+
+    this.news.loadPublished().subscribe();
   }
 
   get latestNews() {

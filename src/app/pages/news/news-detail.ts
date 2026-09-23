@@ -24,34 +24,36 @@ export class NewsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const slug = this.route.snapshot.paramMap.get('slug') ?? '';
-    this.post = this.news.bySlug(slug);
 
-    if (!this.post || !this.post.published) {
-      this.router.navigate(['/news']);
-      return;
-    }
+    this.news.fetchBySlug(slug).subscribe({
+      next: (post) => this.onPostLoaded(post),
+      error: () => this.router.navigate(['/news']),
+    });
+  }
 
-    this.related = this.news
-      .published()
-      .filter((p) => p.id !== this.post!.id)
-      .slice(0, 2);
+  private onPostLoaded(post: NewsPost): void {
+    this.post = post;
 
     this.seo.apply({
-      title: this.post.title,
-      description: this.post.excerpt,
-      path: `/news/${this.post.slug}`,
+      title: post.title,
+      description: post.excerpt,
+      path: `/news/${post.slug}`,
       type: 'article',
     });
 
     this.seo.setJsonLd('ld-article', {
       '@context': 'https://schema.org',
       '@type': 'NewsArticle',
-      headline: this.post.title,
-      description: this.post.excerpt,
-      datePublished: this.post.publishedAt,
-      dateModified: this.post.updatedAt,
-      author: { '@type': 'Person', name: this.post.author },
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt,
+      author: { '@type': 'Person', name: post.author },
       publisher: { '@type': 'Organization', name: 'S. Butshingi Academy' },
+    });
+
+    this.news.loadPublished().subscribe((posts) => {
+      this.related = posts.filter((p) => p.id !== post.id).slice(0, 2);
     });
   }
 

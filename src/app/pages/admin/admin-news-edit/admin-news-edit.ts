@@ -19,6 +19,8 @@ export class AdminNewsEditComponent implements OnInit {
 
   editing: NewsPost | undefined;
   readonly saved = signal(false);
+  readonly saving = signal(false);
+  readonly error = signal<string | null>(null);
 
   readonly categories = ['Announcement', 'Event', 'Achievement', 'Community'];
   readonly emojiOptions = ['📝', '🏆', '⚽', '📚', '💻', '🎓', '🎉', '📢', '🌱', '🤝'];
@@ -37,10 +39,13 @@ export class AdminNewsEditComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.editing = this.news.byId(id);
-      if (this.editing) {
-        this.form.patchValue(this.editing);
-      }
+      this.news.fetchById(id).subscribe({
+        next: (post) => {
+          this.editing = post;
+          this.form.patchValue(post);
+        },
+        error: () => this.router.navigateByUrl('/admin/news'),
+      });
     }
   }
 
@@ -51,18 +56,24 @@ export class AdminNewsEditComponent implements OnInit {
     }
 
     const value = this.form.getRawValue();
+    this.saving.set(true);
+    this.error.set(null);
 
-    if (this.editing) {
-      this.news.update(this.editing.id, value);
-    } else {
-      this.news.create({
-        ...value,
-        publishedAt: new Date().toISOString(),
-      });
-    }
+    const request$ = this.editing
+      ? this.news.update(this.editing.id, value)
+      : this.news.create({ ...value, publishedAt: new Date().toISOString() });
 
-    this.saved.set(true);
-    setTimeout(() => this.router.navigateByUrl('/admin/news'), 600);
+    request$.subscribe({
+      next: () => {
+        this.saving.set(false);
+        this.saved.set(true);
+        setTimeout(() => this.router.navigateByUrl('/admin/news'), 600);
+      },
+      error: () => {
+        this.saving.set(false);
+        this.error.set('Could not save this post. Please try again.');
+      },
+    });
   }
 
   field(name: keyof typeof this.form.controls) {

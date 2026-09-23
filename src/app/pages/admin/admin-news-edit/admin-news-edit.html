@@ -70,8 +70,14 @@
     </label>
   </div>
 
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
   <div class="edit-form__actions">
-    <button type="submit" class="btn btn--primary">{{ saved() ? 'Saved ✓' : (editing ? 'Save changes' : 'Publish post') }}</button>
+    <button type="submit" class="btn btn--primary" [disabled]="saving()">
+      {{ saved() ? 'Saved ✓' : saving() ? 'Saving…' : (editing ? 'Save changes' : 'Publish post') }}
+    </button>
     <a routerLink="/admin/news" class="btn btn--ghost">Cancel</a>
   </div>
 </form>

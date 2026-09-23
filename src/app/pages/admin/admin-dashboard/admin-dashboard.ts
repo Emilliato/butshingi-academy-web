@@ -26,5 +26,6 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.applications.loadAll().subscribe();
+    this.news.loadAll().subscribe();
   }
 }
