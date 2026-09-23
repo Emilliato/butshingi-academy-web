@@ -73,7 +73,7 @@
 .support__num {
   font-family: var(--font-heading);
   font-size: 1.4rem;
-  color: var(--color-amber-dark);
+  color: var(--color-gold-dark);
 }
 
 .support__item h3 { font-size: 1rem; margin-bottom: 4px; }
@@ -87,7 +87,7 @@
   gap: 20px;
 }
 
-.academics-cta__grid h2 { color: var(--color-cream-soft); margin: 0; }
+.academics-cta__grid h2 { color: var(--color-surface-soft); margin: 0; }
 
 @media (max-width: 1000px) {
   .phase-grid { grid-template-columns: repeat(2, 1fr); }

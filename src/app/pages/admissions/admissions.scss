@@ -17,8 +17,8 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: var(--color-forest);
-  color: var(--color-cream-soft);
+  background: var(--color-navy);
+  color: var(--color-surface-soft);
   font-family: var(--font-heading);
   font-weight: 700;
   margin-bottom: 14px;
@@ -48,7 +48,7 @@ legend {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--color-forest-dark);
+  color: var(--color-navy-dark);
   margin-bottom: 18px;
   padding: 0;
 }
@@ -74,7 +74,7 @@ legend {
   cursor: pointer;
 }
 
-.checkbox-field input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--color-forest); }
+.checkbox-field input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--color-navy); }
 
 /* ---------- Success state ---------- */
 .success-card {
@@ -93,14 +93,14 @@ legend {
   margin: 24px auto;
   padding: 18px 28px;
   border-radius: var(--radius-md);
-  background: var(--color-forest-tint);
+  background: var(--color-navy-tint);
   display: inline-flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.success-card__ref span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-forest-dark); }
-.success-card__ref strong { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-forest-dark); }
+.success-card__ref span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-navy-dark); }
+.success-card__ref strong { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-navy-dark); }
 
 .success-card__note { font-size: 0.88rem; }
 

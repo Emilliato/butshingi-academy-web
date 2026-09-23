@@ -4,8 +4,8 @@
   "description": "Community-rooted academy in Mqonci, Chris Hani District, Eastern Cape.",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#F9F2DE",
-  "theme_color": "#1E7A49",
+  "background_color": "#F6F7F9",
+  "theme_color": "#1B2A4A",
   "icons": [
     { "src": "images/logo.jpg", "sizes": "any", "type": "image/jpeg" },
     { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }

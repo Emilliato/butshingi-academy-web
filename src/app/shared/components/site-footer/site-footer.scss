@@ -1,6 +1,6 @@
 .footer {
   background: var(--color-ink);
-  color: rgba(249, 242, 222, 0.75);
+  color: rgba(244, 246, 249, 0.75);
   padding-block: 64px 28px;
 }
 
@@ -30,13 +30,13 @@
 }
 
 .brand__text { display: flex; flex-direction: column; line-height: 1.2; }
-.brand__text strong { color: var(--color-cream-soft); font-family: var(--font-heading); font-size: 1.05rem; }
-.brand__text small { font-size: 0.72rem; color: rgba(249, 242, 222, 0.55); }
+.brand__text strong { color: var(--color-surface-soft); font-family: var(--font-heading); font-size: 1.05rem; }
+.brand__text small { font-size: 0.72rem; color: rgba(244, 246, 249, 0.55); }
 
-.footer__brand p { color: rgba(249, 242, 222, 0.65); max-width: 32ch; }
+.footer__brand p { color: rgba(244, 246, 249, 0.65); max-width: 32ch; }
 
 .footer__col h4 {
-  color: var(--color-cream-soft);
+  color: var(--color-surface-soft);
   font-size: 0.82rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -54,12 +54,12 @@
 .footer__col a,
 .footer__col p {
   font-size: 0.92rem;
-  color: rgba(249, 242, 222, 0.68);
+  color: rgba(244, 246, 249, 0.68);
   transition: color 0.2s ease;
   margin: 0;
 }
 
-.footer__col a:hover { color: var(--color-amber); }
+.footer__col a:hover { color: var(--color-gold); }
 
 .footer__bottom {
   display: flex;
@@ -68,9 +68,9 @@
   gap: 8px;
   margin-top: 56px;
   padding-top: 24px;
-  border-top: 1px solid rgba(249, 242, 222, 0.1);
+  border-top: 1px solid rgba(244, 246, 249, 0.1);
   font-size: 0.8rem;
-  color: rgba(249, 242, 222, 0.45);
+  color: rgba(244, 246, 249, 0.45);
 }
 
 .footer__bottom p { margin: 0; }

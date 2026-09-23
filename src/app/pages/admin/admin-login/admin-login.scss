@@ -3,8 +3,8 @@
   display: grid;
   place-items: center;
   padding: 24px;
-  background: radial-gradient(circle at 20% 20%, rgba(241, 164, 56, 0.14), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(30, 122, 73, 0.16), transparent 50%),
+  background: radial-gradient(circle at 20% 20%, rgba(191, 155, 48, 0.14), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(27, 42, 74, 0.16), transparent 50%),
     var(--color-ink);
 }
 
@@ -34,7 +34,7 @@
   background: var(--color-white);
   overflow: hidden;
   flex-shrink: 0;
-  box-shadow: 0 0 0 1px rgba(38, 33, 29, 0.1);
+  box-shadow: 0 0 0 1px rgba(28, 34, 51, 0.1);
 }
 
 .login-brand .mark img {
@@ -57,14 +57,14 @@
   margin-top: 24px;
   padding: 16px;
   border-radius: 12px;
-  background: var(--color-amber-tint);
+  background: var(--color-gold-tint);
   font-size: 0.82rem;
 }
 
-.login-demo strong { display: block; margin-bottom: 4px; color: var(--color-amber-dark); }
+.login-demo strong { display: block; margin-bottom: 4px; color: var(--color-gold-dark); }
 .login-demo code {
   display: inline-block;
-  background: rgba(38, 33, 29, 0.08);
+  background: rgba(28, 34, 51, 0.08);
   padding: 2px 8px;
   border-radius: 6px;
   margin-bottom: 8px;
@@ -77,4 +77,4 @@
   font-size: 0.85rem;
   color: var(--text-muted);
 }
-.login-back:hover { color: var(--color-forest); }
+.login-back:hover { color: var(--color-navy); }

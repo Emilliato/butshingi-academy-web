@@ -27,7 +27,7 @@ import { SeoService } from '../../core/services/seo.service';
     .not-found__code {
       font-family: var(--font-heading);
       font-size: 5rem;
-      color: var(--color-amber);
+      color: var(--color-gold);
       display: block;
     }
     .not-found p { max-width: 42ch; margin: 12px auto 28px; }

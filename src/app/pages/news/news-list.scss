@@ -8,7 +8,7 @@
 .filter-chip {
   padding: 8px 18px;
   border-radius: 999px;
-  border: 1.5px solid rgba(38, 33, 29, 0.14);
+  border: 1.5px solid rgba(28, 34, 51, 0.14);
   background: var(--surface-alt);
   font-weight: 600;
   font-size: 0.85rem;
@@ -16,12 +16,12 @@
   transition: all 0.2s ease;
 }
 
-.filter-chip:hover { border-color: var(--color-forest); }
+.filter-chip:hover { border-color: var(--color-navy); }
 
 .filter-chip--active {
-  background: var(--color-forest);
-  border-color: var(--color-forest);
-  color: var(--color-cream-soft);
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-surface-soft);
 }
 
 .news-grid {

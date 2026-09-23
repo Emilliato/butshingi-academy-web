@@ -7,7 +7,7 @@
 
 .admin-sidebar {
   background: var(--color-ink);
-  color: var(--color-cream-soft);
+  color: var(--color-surface-soft);
   display: flex;
   flex-direction: column;
   padding: 24px 18px;
@@ -23,14 +23,14 @@
   font-family: var(--font-heading);
   font-weight: 600;
   margin-bottom: 32px;
-  color: var(--color-cream-soft);
+  color: var(--color-surface-soft);
 }
 
 .admin-sidebar__brand small {
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 0.7rem;
-  color: rgba(249, 242, 222, 0.5);
+  color: rgba(244, 246, 249, 0.5);
 }
 
 .admin-sidebar__brand .mark {
@@ -65,19 +65,19 @@
   border-radius: 12px;
   font-size: 0.92rem;
   font-weight: 500;
-  color: rgba(249, 242, 222, 0.75);
+  color: rgba(244, 246, 249, 0.75);
   transition: background 0.2s ease, color 0.2s ease;
   position: relative;
 }
 
-.admin-nav a:hover { background: rgba(249, 242, 222, 0.08); color: var(--color-cream-soft); }
-.admin-nav a.active { background: var(--color-forest); color: var(--color-cream-soft); }
+.admin-nav a:hover { background: rgba(244, 246, 249, 0.08); color: var(--color-surface-soft); }
+.admin-nav a.active { background: var(--color-navy); color: var(--color-surface-soft); }
 
 .admin-nav .ico { font-size: 1rem; }
 
 .badge {
   margin-left: auto;
-  background: var(--color-amber);
+  background: var(--color-gold);
   color: var(--color-ink);
   font-size: 0.7rem;
   font-weight: 700;
@@ -86,15 +86,15 @@
 }
 
 .admin-sidebar__footer {
-  border-top: 1px solid rgba(249, 242, 222, 0.1);
+  border-top: 1px solid rgba(244, 246, 249, 0.1);
   padding-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.view-site { font-size: 0.82rem; color: rgba(249, 242, 222, 0.6); }
-.view-site:hover { color: var(--color-amber); }
+.view-site { font-size: 0.82rem; color: rgba(244, 246, 249, 0.6); }
+.view-site:hover { color: var(--color-gold); }
 
 .user { display: flex; align-items: center; gap: 10px; }
 
@@ -104,24 +104,24 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--color-forest);
-  color: var(--color-cream-soft);
+  background: var(--color-navy);
+  color: var(--color-surface-soft);
   font-weight: 700;
   font-size: 0.85rem;
 }
 
 .user__meta { display: flex; flex-direction: column; }
-.user__meta strong { font-size: 0.85rem; color: var(--color-cream-soft); }
+.user__meta strong { font-size: 0.85rem; color: var(--color-surface-soft); }
 .user__meta button {
   background: none;
   border: none;
   padding: 0;
   font-size: 0.76rem;
-  color: rgba(249, 242, 222, 0.55);
+  color: rgba(244, 246, 249, 0.55);
   cursor: pointer;
   text-align: left;
 }
-.user__meta button:hover { color: var(--color-amber); }
+.user__meta button:hover { color: var(--color-gold); }
 
 .admin-main {
   padding: 32px 40px 60px;

@@ -13,10 +13,15 @@ a full multi-page school website with an admin panel.
 
 ## Brand
 
-Colors, fonts and copy were pulled from the original site's live branding data:
+Copy was pulled from the original site's live branding data. The colour palette was
+redesigned around the school uniform (navy, white and grey), with a muted gold as the
+complementary accent:
 
-- Cream `#F9F2DE`, forest green `#1E7A49`, amber `#F1A438`, ink `#26211D`
+- Navy `#1B2A4A`, gold `#BF9B30`, surface grey `#F6F7F9`, ink `#1C2233`
 - Headings: **Fraunces** (serif) · Body: **Space Grotesk**
+- The original cream/forest-green/amber palette (from the Lovable site) is archived at
+  [`archive/styles-palette-backup-cream-forest-amber.scss`](archive/styles-palette-backup-cream-forest-amber.scss)
+  for reference or rollback.
 
 ## Structure
 

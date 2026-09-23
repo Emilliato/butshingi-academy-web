@@ -6,7 +6,7 @@
   display: inline-block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-forest);
+  color: var(--color-navy);
   margin-bottom: 18px;
 }
 
@@ -21,7 +21,7 @@
   margin-top: 12px;
 }
 
-.article__meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--color-amber); }
+.article__meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--color-gold); }
 
 .article__cover {
   margin-top: 32px;
@@ -29,7 +29,7 @@
   place-items: center;
   height: 340px;
   border-radius: var(--radius-lg);
-  background: var(--color-forest-tint);
+  background: var(--color-navy-tint);
   font-size: 4rem;
   overflow: hidden;
 }

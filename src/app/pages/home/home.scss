@@ -2,14 +2,14 @@
   position: relative;
   padding-block: clamp(64px, 10vw, 120px) clamp(48px, 6vw, 80px);
   overflow: hidden;
-  background: radial-gradient(circle at 12% 18%, rgba(241, 164, 56, 0.16), transparent 55%),
-    radial-gradient(circle at 88% 8%, rgba(30, 122, 73, 0.16), transparent 45%);
+  background: radial-gradient(circle at 12% 18%, rgba(191, 155, 48, 0.16), transparent 55%),
+    radial-gradient(circle at 88% 8%, rgba(27, 42, 74, 0.16), transparent 45%);
 }
 
 .hero__glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(249, 242, 222, 0.4), transparent 60%);
+  background: linear-gradient(180deg, rgba(244, 246, 249, 0.4), transparent 60%);
   pointer-events: none;
 }
 
@@ -46,7 +46,7 @@
 
 .hero__trust .dot {
   width: 4px; height: 4px; border-radius: 50%;
-  background: var(--color-amber);
+  background: var(--color-gold);
 }
 
 .hero__visual {
@@ -64,8 +64,8 @@
 
 .hero__card--main {
   position: relative;
-  background: var(--color-forest);
-  color: var(--color-cream-soft);
+  background: var(--color-navy);
+  color: var(--color-surface-soft);
   width: 100%;
   max-width: 360px;
   aspect-ratio: 4 / 5;
@@ -90,14 +90,14 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 83, 47, 0) 40%, rgba(20, 83, 47, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(14, 25, 48, 0) 40%, rgba(14, 25, 48, 0.92) 100%);
 }
 
 .hero__card--main p {
   position: relative;
   z-index: 1;
   padding: 0 28px 28px;
-  color: var(--color-cream-soft);
+  color: var(--color-surface-soft);
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-style: italic;
@@ -118,7 +118,7 @@
 .hero__card--float strong {
   font-family: var(--font-heading);
   font-size: 2.2rem;
-  color: var(--color-amber-dark);
+  color: var(--color-gold-dark);
 }
 
 .hero__card--float span {
@@ -148,7 +148,7 @@
   display: block;
   font-family: var(--font-heading);
   font-size: 2.6rem;
-  color: var(--color-forest);
+  color: var(--color-navy);
 }
 
 .stats__item span {
@@ -185,7 +185,7 @@
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: var(--color-forest-tint);
+  background: var(--color-navy-tint);
   font-size: 1.5rem;
   margin-bottom: 16px;
 }
@@ -290,14 +290,14 @@
 .involved__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 26px; }
 
 .involved__card {
-  background: rgba(249, 242, 222, 0.08);
-  border: 1px solid rgba(249, 242, 222, 0.22);
+  background: rgba(244, 246, 249, 0.08);
+  border: 1px solid rgba(244, 246, 249, 0.22);
   border-radius: var(--radius-lg);
   padding: 32px;
 }
 
-.involved__card h3 { color: var(--color-cream-soft); }
-.involved__card p { color: rgba(249, 242, 222, 0.78); margin-bottom: 22px; }
+.involved__card h3 { color: var(--color-surface-soft); }
+.involved__card p { color: rgba(244, 246, 249, 0.78); margin-bottom: 22px; }
 
 @media (max-width: 1000px) {
   .hero__grid { grid-template-columns: 1fr; }
