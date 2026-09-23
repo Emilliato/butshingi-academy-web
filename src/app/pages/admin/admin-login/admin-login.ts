@@ -19,6 +19,7 @@ export class AdminLoginComponent implements OnInit {
   private seo = inject(SeoService);
 
   readonly error = signal<string | null>(null);
+  readonly submitting = signal(false);
 
   readonly form = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -40,13 +41,16 @@ export class AdminLoginComponent implements OnInit {
       return;
     }
     const { username, password } = this.form.getRawValue();
-    const ok = this.auth.login(username, password);
-    if (!ok) {
-      this.error.set('Incorrect username or password. Please try again.');
-      return;
-    }
-    this.error.set(null);
-    const redirect = this.route.snapshot.queryParamMap.get('redirect') ?? '/admin/dashboard';
-    this.router.navigateByUrl(redirect);
+    this.submitting.set(true);
+    this.auth.login(username, password).subscribe((ok) => {
+      this.submitting.set(false);
+      if (!ok) {
+        this.error.set('Incorrect username or password. Please try again.');
+        return;
+      }
+      this.error.set(null);
+      const redirect = this.route.snapshot.queryParamMap.get('redirect') ?? '/admin/dashboard';
+      this.router.navigateByUrl(redirect);
+    });
   }
 }

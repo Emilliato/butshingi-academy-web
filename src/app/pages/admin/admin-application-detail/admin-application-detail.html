@@ -1,4 +1,6 @@
-@if (application; as app) {
+@if (loading()) {
+  <p>Loading application…</p>
+} @else if (application; as app) {
   <div class="admin-header">
     <div>
       <a routerLink="/admin/applications" class="back-link">&larr; All applications</a>

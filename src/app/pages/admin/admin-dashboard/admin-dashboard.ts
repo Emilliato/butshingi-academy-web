@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { NewsService } from '../../../core/services/news.service';
@@ -11,7 +11,7 @@ import { ApplicationService } from '../../../core/services/application.service';
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.scss',
 })
-export class AdminDashboardComponent {
+export class AdminDashboardComponent implements OnInit {
   news = inject(NewsService);
   applications = inject(ApplicationService);
 
@@ -23,4 +23,8 @@ export class AdminDashboardComponent {
 
   readonly recentApplications = computed(() => this.applications.all().slice(0, 5));
   readonly recentPosts = computed(() => this.news.all().slice(0, 5));
+
+  ngOnInit(): void {
+    this.applications.loadAll().subscribe();
+  }
 }

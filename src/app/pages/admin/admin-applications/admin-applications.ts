@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { ApplicationService } from '../../../core/services/application.service';
@@ -11,8 +11,11 @@ import { ApplicationStatus } from '../../../core/models/application.model';
   templateUrl: './admin-applications.html',
   styleUrl: './admin-applications.scss',
 })
-export class AdminApplicationsComponent {
+export class AdminApplicationsComponent implements OnInit {
   applications = inject(ApplicationService);
+
+  readonly loading = signal(true);
+  readonly error = signal<string | null>(null);
 
   readonly statusFilter = signal<ApplicationStatus | 'all'>('all');
   readonly search = signal('');
@@ -34,6 +37,22 @@ export class AdminApplicationsComponent {
       return matchesStatus && matchesSearch;
     });
   });
+
+  ngOnInit(): void {
+    this.reload();
+  }
+
+  reload(): void {
+    this.loading.set(true);
+    this.error.set(null);
+    this.applications.loadAll().subscribe({
+      next: () => this.loading.set(false),
+      error: () => {
+        this.loading.set(false);
+        this.error.set('Could not load applications from the server. Please try again.');
+      },
+    });
+  }
 
   setStatus(status: ApplicationStatus | 'all'): void {
     this.statusFilter.set(status);

@@ -19,41 +19,54 @@ export class AdminApplicationDetailComponent implements OnInit {
 
   application: IntakeApplication | undefined;
   notes = '';
+  readonly loading = signal(true);
   readonly saved = signal(false);
 
   readonly statuses: ApplicationStatus[] = ['submitted', 'under-review', 'accepted', 'waitlisted', 'declined'];
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.application = id ? this.applications.byId(id) : undefined;
-    this.notes = this.application?.adminNotes ?? '';
-
-    if (!this.application) {
+    if (!id) {
       this.router.navigateByUrl('/admin/applications');
+      return;
     }
+
+    this.applications.fetchById(id).subscribe({
+      next: (app) => {
+        this.application = app;
+        this.notes = app.adminNotes;
+        this.loading.set(false);
+      },
+      error: () => this.router.navigateByUrl('/admin/applications'),
+    });
   }
 
   setStatus(status: ApplicationStatus): void {
     if (!this.application) return;
-    this.applications.setStatus(this.application.id, status, this.notes);
-    this.application = this.applications.byId(this.application.id);
-    this.saved.set(true);
-    setTimeout(() => this.saved.set(false), 1800);
+    this.applications.setStatus(this.application.id, status, this.notes).subscribe((app) => {
+      this.application = app;
+      this.notes = app.adminNotes;
+      this.saved.set(true);
+      setTimeout(() => this.saved.set(false), 1800);
+    });
   }
 
   saveNotes(): void {
     if (!this.application) return;
-    this.applications.setStatus(this.application.id, this.application.status, this.notes);
-    this.application = this.applications.byId(this.application.id);
-    this.saved.set(true);
-    setTimeout(() => this.saved.set(false), 1800);
+    this.applications.setStatus(this.application.id, this.application.status, this.notes).subscribe((app) => {
+      this.application = app;
+      this.notes = app.adminNotes;
+      this.saved.set(true);
+      setTimeout(() => this.saved.set(false), 1800);
+    });
   }
 
   remove(): void {
     if (!this.application) return;
     if (confirm('Delete this application permanently?')) {
-      this.applications.remove(this.application.id);
-      this.router.navigateByUrl('/admin/applications');
+      this.applications.remove(this.application.id).subscribe(() => {
+        this.router.navigateByUrl('/admin/applications');
+      });
     }
   }
 }

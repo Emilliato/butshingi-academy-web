@@ -23,6 +23,16 @@
   </div>
 </div>
 
+@if (error()) {
+  <div class="empty-state">
+    <p>{{ error() }}</p>
+    <button type="button" class="btn btn--secondary" (click)="reload()">Retry</button>
+  </div>
+} @else if (loading()) {
+  <div class="empty-state">
+    <p>Loading applications…</p>
+  </div>
+} @else {
 <div class="table-card">
   @if (filtered().length) {
     <table class="data-table">
@@ -55,3 +65,4 @@
     </div>
   }
 </div>
+}

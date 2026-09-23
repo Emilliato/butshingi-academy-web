@@ -21,14 +21,10 @@
         <p class="error login-error">{{ error() }}</p>
       }
 
-      <button type="submit" class="btn btn--primary btn--block">Sign in</button>
+      <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting()">
+        {{ submitting() ? 'Signing in…' : 'Sign in' }}
+      </button>
     </form>
-
-    <div class="login-demo">
-      <strong>Demo credentials</strong>
-      <code>admin / ButshingiAcademy2026</code>
-      <p>Swap <code>AuthService</code> for a real backend before going live.</p>
-    </div>
 
     <a routerLink="/" class="login-back">&larr; Back to the site</a>
   </div>

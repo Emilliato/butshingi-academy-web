@@ -187,6 +187,10 @@
           </div>
         </fieldset>
 
+        @if (submitError()) {
+          <p class="error">{{ submitError() }}</p>
+        }
+
         <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting()">
           {{ submitting() ? 'Submitting…' : 'Submit application' }}
         </button>

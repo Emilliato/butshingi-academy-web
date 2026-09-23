@@ -21,6 +21,7 @@ export class AdmissionsComponent implements OnInit {
   readonly nextIntakeYear = new Date().getFullYear() + 1;
   readonly submitting = signal(false);
   readonly submitted = signal<IntakeApplication | null>(null);
+  readonly submitError = signal<string | null>(null);
 
   readonly grades = [
     'Grade R', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5',
@@ -66,14 +67,19 @@ export class AdmissionsComponent implements OnInit {
     }
 
     this.submitting.set(true);
+    this.submitError.set(null);
     const value = this.form.getRawValue();
 
-    // Simulated network latency so the flow feels real; swap for an HTTP call to a real backend.
-    setTimeout(() => {
-      const record = this.applications.submit({ ...value, intakeYear: this.nextIntakeYear });
-      this.submitting.set(false);
-      this.submitted.set(record);
-    }, 500);
+    this.applications.submit({ ...value, intakeYear: this.nextIntakeYear }).subscribe({
+      next: (record) => {
+        this.submitting.set(false);
+        this.submitted.set(record);
+      },
+      error: () => {
+        this.submitting.set(false);
+        this.submitError.set('Something went wrong submitting your application. Please try again or contact us directly.');
+      },
+    });
   }
 
   startNewApplication(): void {
