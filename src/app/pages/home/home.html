@@ -105,21 +105,23 @@
     <a routerLink="/about" class="btn btn--ghost">Meet the full team</a>
   </div>
 
-  <div class="container team-teaser__grid">
-    <div class="team-teaser__photo" appReveal>
-      <img src="images/leadership-team.jpg" alt="S. Butshingi Academy directors and leadership team" loading="lazy" />
-    </div>
-    <div class="team-teaser__list stagger">
-      @for (person of team; track person.name; let i = $index) {
-        <div class="team-teaser__member" appReveal [revealDelay]="i * 80">
-          <span class="team-teaser__avatar">{{ person.initials }}</span>
-          <div>
-            <strong>{{ person.name }}</strong>
-            <span>{{ person.role }}</span>
-          </div>
+  <div class="container team-teaser__grid stagger">
+    @for (person of team; track person.name; let i = $index) {
+      <div class="team-teaser__card" appReveal [revealDelay]="(i % 3) * 90">
+        <div class="team-teaser__card-photo">
+          @if (person.photo) {
+            <img [src]="person.photo" [alt]="person.name" loading="lazy" />
+          } @else {
+            <span class="team-teaser__card-initials">{{ person.initials }}</span>
+          }
         </div>
-      }
-    </div>
+        <div class="team-teaser__card-body">
+          <h3>{{ person.name }}</h3>
+          <span class="team-teaser__card-role">{{ person.role }}</span>
+          <p>{{ person.bio }}</p>
+        </div>
+      </div>
+    }
   </div>
 </section>
 
