@@ -5,6 +5,7 @@ import { SeoService } from '../../core/services/seo.service';
 import { NewsService } from '../../core/services/news.service';
 import { RevealDirective } from '../../core/directives/reveal.directive';
 import { CountUpDirective } from '../../core/directives/count-up.directive';
+import { TEAM_MEMBERS } from '../../core/data/team';
 
 interface Pillar {
   icon: string;
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   news = inject(NewsService);
 
   readonly nextIntakeYear = new Date().getFullYear() + 1;
+  readonly team = TEAM_MEMBERS;
 
   readonly stats = [
     { value: 81, suffix: '', label: 'Learners supported each year' },

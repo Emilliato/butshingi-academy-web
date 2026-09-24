@@ -2,12 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { RevealDirective } from '../../core/directives/reveal.directive';
-
-interface TeamMember {
-  initials: string;
-  name: string;
-  role: string;
-}
+import { TEAM_MEMBERS } from '../../core/data/team';
 
 @Component({
   selector: 'app-about',
@@ -19,14 +14,7 @@ interface TeamMember {
 export class AboutComponent implements OnInit {
   private seo = inject(SeoService);
 
-  readonly team: TeamMember[] = [
-    { initials: 'KB', name: 'Khanya Butshingi', role: 'Project Manager' },
-    { initials: 'VN', name: 'Vuyisa Ntshinka', role: 'Financial Officer' },
-    { initials: 'NM', name: 'Nontyatyambo Mkalali', role: 'Director' },
-    { initials: 'AM', name: 'Asazama Makhwenkwe', role: 'Academic Lead' },
-    { initials: 'VM', name: 'Vuyolwethu Manqeyi', role: 'Director' },
-    { initials: 'SH', name: 'Sithandiwe Hlayo', role: 'Monitoring & Evaluation Lead' },
-  ];
+  readonly team = TEAM_MEMBERS;
 
   readonly timeline = [
     { year: 'Founded', copy: 'Registered as an NPO (Reg 2020/119065/07) to serve learners in Mqonci, Chris Hani District.' },

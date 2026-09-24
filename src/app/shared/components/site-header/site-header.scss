@@ -2,17 +2,32 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(244, 246, 249, 0.75);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
   border-bottom: 1px solid transparent;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  // The blurred background lives on a pseudo-element rather than directly on
+  // .header: an element with backdrop-filter becomes a containing block for
+  // its position:fixed descendants, which would trap the mobile nav overlay
+  // inside the header's own (tiny) box instead of letting it fill the screen.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: rgba(244, 246, 249, 0.75);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    transition: background 0.3s ease;
+  }
 }
 
 .header--scrolled {
-  background: rgba(244, 246, 249, 0.95);
   border-bottom-color: rgba(28, 34, 51, 0.08);
   box-shadow: 0 8px 24px -18px rgba(28, 34, 51, 0.3);
+
+  &::before {
+    background: rgba(244, 246, 249, 0.95);
+  }
 }
 
 .header__bar {
