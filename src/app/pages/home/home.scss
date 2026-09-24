@@ -256,9 +256,9 @@
 .team-teaser__card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
 
 .team-teaser__card-photo {
+  position: relative;
   aspect-ratio: 4 / 5;
-  display: grid;
-  place-items: center;
+  overflow: hidden;
   background: linear-gradient(155deg, var(--color-navy), #2a3b63);
 }
 
@@ -269,12 +269,30 @@
   display: block;
 }
 
+.team-teaser__placeholder {
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  transform: translateX(-50%);
+  width: 62%;
+  fill: rgba(244, 246, 249, 0.14);
+}
+
 .team-teaser__card-initials {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-navy);
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 2.4rem;
-  color: var(--color-gold);
-  opacity: 0.9;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .team-teaser__card-body { padding: 22px 24px 26px; }
