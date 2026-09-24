@@ -105,27 +105,28 @@
     <a routerLink="/about" class="btn btn--ghost">Meet the full team</a>
   </div>
 
-  <div class="container team-teaser__grid stagger">
-    @for (person of team; track person.name; let i = $index) {
-      <div class="team-teaser__card" appReveal [revealDelay]="(i % 3) * 90">
-        <div class="team-teaser__card-photo">
-          @if (person.photo) {
-            <img [src]="person.photo" [alt]="person.name" loading="lazy" />
-          } @else {
-            <svg class="team-teaser__placeholder" viewBox="0 0 200 250" aria-hidden="true">
-              <circle cx="100" cy="95" r="42" />
-              <path d="M20 250c0-55 36-95 80-95s80 40 80 95" />
-            </svg>
-            <span class="team-teaser__card-initials">{{ person.initials }}</span>
-          }
+  <div class="container team-teaser__track">
+    <div class="team-teaser__grid stagger">
+      @for (person of team; track person.name; let i = $index) {
+        <div class="team-teaser__card" appReveal [revealDelay]="(i % 3) * 90">
+          <div class="team-teaser__card-photo">
+            @if (person.photo) {
+              <img [src]="person.photo" [alt]="person.name" loading="lazy" />
+            } @else {
+              <svg class="team-teaser__placeholder" viewBox="0 0 200 250" aria-hidden="true">
+                <circle cx="100" cy="95" r="42" />
+                <path d="M20 250c0-55 36-95 80-95s80 40 80 95" />
+              </svg>
+            }
+          </div>
+          <div class="team-teaser__card-body">
+            <h3>{{ person.name }}</h3>
+            <span class="team-teaser__card-role">{{ person.role }}</span>
+            <p>{{ person.bio }}</p>
+          </div>
         </div>
-        <div class="team-teaser__card-body">
-          <h3>{{ person.name }}</h3>
-          <span class="team-teaser__card-role">{{ person.role }}</span>
-          <p>{{ person.bio }}</p>
-        </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 </section>
 
