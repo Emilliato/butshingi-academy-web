@@ -23,10 +23,7 @@ export class AdmissionsComponent implements OnInit {
   readonly submitted = signal<IntakeApplication | null>(null);
   readonly submitError = signal<string | null>(null);
 
-  readonly grades = [
-    'Grade R', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5',
-    'Grade 6', 'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12',
-  ];
+  readonly grades = ['Grade 10', 'Grade 11', 'Grade 12'];
 
   readonly steps = [
     { title: 'Complete the form', copy: 'Tell us about the learner and their guardian below — it takes about five minutes.' },

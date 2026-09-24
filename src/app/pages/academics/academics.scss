@@ -1,13 +1,15 @@
 .phase-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .phase-card {
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
   background: var(--surface-alt);
   border-radius: var(--radius-md);
-  padding: 26px;
+  padding: 36px 32px;
   border: 1px solid var(--border-subtle);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
@@ -90,12 +92,10 @@
 .academics-cta__grid h2 { color: var(--color-surface-soft); margin: 0; }
 
 @media (max-width: 1000px) {
-  .phase-grid { grid-template-columns: repeat(2, 1fr); }
   .subject-grid { grid-template-columns: repeat(2, 1fr); }
   .support__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
-  .phase-grid { grid-template-columns: 1fr; }
   .subject-grid { grid-template-columns: 1fr; }
 }

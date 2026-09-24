@@ -14,9 +14,6 @@ export class AcademicsComponent implements OnInit {
   private seo = inject(SeoService);
 
   readonly phases = [
-    { name: 'Foundation Phase', grades: 'Grade R – 3', copy: 'Early literacy and numeracy, play-based learning and school-readiness support.' },
-    { name: 'Intermediate Phase', grades: 'Grade 4 – 6', copy: 'Building strong reading, writing and maths foundations with structured academic support.' },
-    { name: 'Senior Phase', grades: 'Grade 7 – 9', copy: 'Subject choice guidance, exam preparation and the start of career-focused life skills.' },
     { name: 'FET / Matric Prep', grades: 'Grade 10 – 12', copy: 'Exam prep, extra lessons and university/TVET and career guidance for Matric success.' },
   ];
 
@@ -40,7 +37,7 @@ export class AcademicsComponent implements OnInit {
     this.seo.apply({
       title: 'Academics',
       description:
-        'Explore the phases, subjects and academic support programmes offered at S. Butshingi Academy, from Foundation Phase through to Matric preparation.',
+        'Explore the FET / Matric Prep phase, subjects and academic support programmes offered at S. Butshingi Academy for Grade 10 to 12 learners.',
       path: '/academics',
     });
   }
