@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://emilliato.github.io/butshingi-academy-web/sitemap.xml
+Sitemap: https://sbutshingiacademy.co.za/sitemap.xml

@@ -57,8 +57,8 @@ export class HomeComponent implements OnInit {
       name: 'S. Butshingi Academy',
       description:
         'A community-rooted academy in Mqonci, Chris Hani District, Eastern Cape providing quality education, digital learning and learner development.',
-      url: 'https://emilliato.github.io/butshingi-academy-web/',
-      logo: 'https://emilliato.github.io/butshingi-academy-web/images/logo.jpg',
+      url: 'https://sbutshingiacademy.co.za/',
+      logo: 'https://sbutshingiacademy.co.za/images/logo.jpg',
       telephone: '+27735875718',
       email: 'khanyabutshingi22@gmail.com',
       address: {

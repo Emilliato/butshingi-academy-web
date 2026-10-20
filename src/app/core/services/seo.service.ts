@@ -12,7 +12,7 @@ export interface SeoData {
 }
 
 const SITE_NAME = 'S. Butshingi Academy';
-const SITE_URL = 'https://emilliato.github.io/butshingi-academy-web';
+const SITE_URL = 'https://sbutshingiacademy.co.za';
 const DEFAULT_IMAGE = `${SITE_URL}/images/learners-group.jpg`;
 
 @Injectable({ providedIn: 'root' })
