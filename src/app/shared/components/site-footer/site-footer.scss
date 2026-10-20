@@ -74,6 +74,7 @@
 }
 
 .footer__bottom p { margin: 0; }
+.footer__bottom a:hover { color: var(--color-gold); }
 
 @media (max-width: 900px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }

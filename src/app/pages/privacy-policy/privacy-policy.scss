@@ -1,0 +1,41 @@
+.policy__wrap {
+  max-width: 72ch;
+  margin-inline: auto;
+}
+
+.policy__updated {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.policy h2 {
+  font-size: 1.35rem;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.policy h2:first-of-type {
+  margin-top: 0;
+}
+
+.policy p {
+  margin-bottom: 14px;
+}
+
+.policy ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.policy li {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.policy a {
+  color: var(--color-navy);
+  font-weight: 600;
+  text-decoration: underline;
+}

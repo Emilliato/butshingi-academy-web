@@ -41,6 +41,12 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/contact/contact').then((m) => m.ContactComponent),
         title: 'Contact us · S. Butshingi Academy',
       },
+      {
+        path: 'privacy-policy',
+        loadComponent: () =>
+          import('./pages/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicyComponent),
+        title: 'Privacy Policy · S. Butshingi Academy',
+      },
     ],
   },
   {

@@ -25,6 +25,8 @@ export interface IntakeApplication {
   specialNeedsDetails: string;
   motivation: string;
   intakeYear: number;
+  /** Optional, separate from admission itself — never a condition of enrolment. */
+  photoConsent?: boolean;
 
   status: ApplicationStatus;
   submittedAt: string; // ISO date

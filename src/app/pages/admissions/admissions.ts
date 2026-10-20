@@ -47,6 +47,8 @@ export class AdmissionsComponent implements OnInit {
     hasSpecialNeeds: [false],
     specialNeedsDetails: [''],
     motivation: ['', [Validators.required, Validators.minLength(20)]],
+    dataProcessingConsent: [false, Validators.requiredTrue],
+    photoConsent: [false],
   });
 
   ngOnInit(): void {
@@ -65,7 +67,7 @@ export class AdmissionsComponent implements OnInit {
 
     this.submitting.set(true);
     this.submitError.set(null);
-    const value = this.form.getRawValue();
+    const { dataProcessingConsent, ...value } = this.form.getRawValue();
 
     this.applications.submit({ ...value, intakeYear: this.nextIntakeYear }).subscribe({
       next: (record) => {
@@ -83,6 +85,8 @@ export class AdmissionsComponent implements OnInit {
     this.form.reset({
       learnerGender: 'Prefer not to say',
       hasSpecialNeeds: false,
+      dataProcessingConsent: false,
+      photoConsent: false,
     });
     this.submitted.set(null);
   }

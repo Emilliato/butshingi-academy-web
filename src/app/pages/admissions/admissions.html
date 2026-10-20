@@ -187,6 +187,37 @@
           </div>
         </fieldset>
 
+        <fieldset>
+          <legend>Consent &amp; declaration</legend>
+          <div class="field checkbox-field">
+            <label>
+              <input type="checkbox" formControlName="dataProcessingConsent" />
+              I consent to S. Butshingi Academy processing the learner's and my personal
+              information for the purpose of this admissions application, in line with our
+              <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>. *
+            </label>
+            @if (field('dataProcessingConsent').invalid && field('dataProcessingConsent').touched) {
+              <span class="error">This consent is required to submit an application.</span>
+            }
+          </div>
+
+          <div class="field checkbox-field">
+            <label>
+              <input type="checkbox" formControlName="photoConsent" />
+              I consent to photos/video of my child being used on the school's website, social
+              media and printed materials. This is optional and is never a condition of
+              admission — you can change your mind at any time by
+              <a routerLink="/contact" target="_blank">contacting us</a>.
+            </label>
+          </div>
+
+          <p class="hint">
+            See our
+            <a href="documents/photo-media-consent-form.pdf" target="_blank" rel="noopener">downloadable Photo &amp; Media Consent Form</a>
+            for full details on how we use photos.
+          </p>
+        </fieldset>
+
         @if (submitError()) {
           <p class="error">{{ submitError() }}</p>
         }
