@@ -1,0 +1,74 @@
+.fee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.fee-card {
+  position: relative;
+  background: var(--surface-alt);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+}
+
+.fee-card .chip {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.fee-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 14px;
+}
+
+.fee-card__amount {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.fee-card__amount strong {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  color: var(--color-navy);
+}
+
+.fee-card__amount span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.fee-card p { margin: 0; font-size: 0.9rem; }
+
+.fee-note {
+  max-width: 68ch;
+  margin-top: 36px;
+}
+
+.fee-note p {
+  font-size: 0.92rem;
+}
+
+.fees-cta__grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.fees-cta__grid h2 { color: var(--color-surface-soft); margin: 0; }
+
+.fees-cta__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .fee-grid { grid-template-columns: 1fr; }
+}

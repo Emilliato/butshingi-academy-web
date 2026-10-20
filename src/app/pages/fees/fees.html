@@ -1,0 +1,47 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Fees</span>
+    <h1>Affordable, transparent tuition.</h1>
+    <p class="page-hero__lead">
+      As a registered NPO, we keep fees as low as possible while still giving every learner
+      quality tuition, resources and support. Here's exactly what it costs to enrol.
+    </p>
+  </div>
+</section>
+
+<section class="section fees">
+  <div class="container fee-grid stagger">
+    @for (fee of fees; track fee.label; let i = $index) {
+      <article class="fee-card" appReveal [revealDelay]="i * 90">
+        @if (fee.optional) {
+          <span class="chip chip--gold">Optional</span>
+        }
+        <h3>{{ fee.label }}</h3>
+        <div class="fee-card__amount">
+          <strong>{{ fee.amount }}</strong>
+          <span>{{ fee.period }}</span>
+        </div>
+        <p>{{ fee.note }}</p>
+      </article>
+    }
+  </div>
+
+  <div class="container fee-note" appReveal [revealDelay]="150">
+    <p>
+      Fees are billed per our payment schedule, shared with guardians once a learner is
+      accepted. If cost is a concern, please get in touch — we work with families individually
+      and every rand raised through donations goes straight back into reducing fees and
+      funding resources.
+    </p>
+  </div>
+</section>
+
+<section class="section section--ink fees-cta">
+  <div class="container fees-cta__grid" appReveal>
+    <h2>Ready to enrol your child?</h2>
+    <div class="fees-cta__actions">
+      <a routerLink="/admissions" class="btn btn--primary">Apply for next intake</a>
+      <a routerLink="/contact" class="btn btn--ghost-light">Ask us a question</a>
+    </div>
+  </div>
+</section>

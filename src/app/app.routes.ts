@@ -23,6 +23,11 @@ export const routes: Routes = [
         title: 'Academics · S. Butshingi Academy',
       },
       {
+        path: 'fees',
+        loadComponent: () => import('./pages/fees/fees').then((m) => m.FeesComponent),
+        title: 'Fees · S. Butshingi Academy',
+      },
+      {
         path: 'news',
         loadComponent: () => import('./pages/news/news-list').then((m) => m.NewsListComponent),
         title: 'News · S. Butshingi Academy',

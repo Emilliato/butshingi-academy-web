@@ -23,6 +23,7 @@ export class SiteHeaderComponent {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Academics', path: '/academics' },
+    { label: 'Fees', path: '/fees' },
     { label: 'News', path: '/news' },
     { label: 'Careers', path: '/careers' },
   ];
