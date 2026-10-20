@@ -37,6 +37,16 @@ export const routes: Routes = [
         title: 'Admissions & Intake Application · S. Butshingi Academy',
       },
       {
+        path: 'careers',
+        loadComponent: () => import('./pages/careers/careers').then((m) => m.CareersComponent),
+        title: 'Careers · S. Butshingi Academy',
+      },
+      {
+        path: 'tutorials',
+        loadComponent: () => import('./pages/tutorials/tutorials').then((m) => m.TutorialsComponent),
+        title: 'Tutorials · S. Butshingi Academy',
+      },
+      {
         path: 'contact',
         loadComponent: () => import('./pages/contact/contact').then((m) => m.ContactComponent),
         title: 'Contact us · S. Butshingi Academy',
@@ -101,6 +111,20 @@ export const routes: Routes = [
             (m) => m.AdminApplicationDetailComponent,
           ),
         title: 'Application detail · Admin',
+      },
+      {
+        path: 'careers',
+        loadComponent: () =>
+          import('./pages/admin/admin-careers/admin-careers').then((m) => m.AdminCareersComponent),
+        title: 'Careers · Admin',
+      },
+      {
+        path: 'careers/:id',
+        loadComponent: () =>
+          import('./pages/admin/admin-career-detail/admin-career-detail').then(
+            (m) => m.AdminCareerDetailComponent,
+          ),
+        title: 'Career application detail · Admin',
       },
     ],
   },

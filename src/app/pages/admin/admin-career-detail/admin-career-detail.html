@@ -1,0 +1,75 @@
+@if (loading()) {
+  <p>Loading application…</p>
+} @else if (application; as app) {
+  <div class="admin-header">
+    <div>
+      <a routerLink="/admin/careers" class="back-link">&larr; All career applications</a>
+      <h1>{{ app.fullName }}</h1>
+      <p><code>{{ app.referenceNumber }}</code> &middot; Submitted {{ app.submittedAt | date: 'medium' }}</p>
+    </div>
+    <span class="status-pill status-pill--lg" [class]="'status-pill--' + app.status">{{ app.status.replace('-', ' ') }}</span>
+  </div>
+
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="card detail-section">
+        <h2>Applicant details</h2>
+        <dl>
+          <div><dt>Full name</dt><dd>{{ app.fullName }}</dd></div>
+          <div><dt>Position applying for</dt><dd>{{ app.positionAppliedFor }}</dd></div>
+          <div><dt>Phone</dt><dd><a [href]="'tel:' + app.phone">{{ app.phone }}</a></dd></div>
+          <div><dt>Email</dt><dd><a [href]="'mailto:' + app.email">{{ app.email }}</a></dd></div>
+          <div class="span-2"><dt>Years of experience</dt><dd>{{ app.yearsOfExperience || '—' }}</dd></div>
+        </dl>
+      </div>
+
+      <div class="card detail-section">
+        <h2>CV</h2>
+        @if (app.cvUrl) {
+          <a class="btn btn--secondary btn--sm" [href]="app.cvUrl" target="_blank" rel="noopener">
+            Download {{ app.cvFileName || 'CV' }}
+          </a>
+        } @else {
+          <p>{{ app.cvFileName || 'No CV on file.' }}</p>
+        }
+      </div>
+
+      <div class="card detail-section">
+        <h2>Cover letter</h2>
+        <p>{{ app.coverLetter }}</p>
+      </div>
+    </div>
+
+    <div class="detail-side">
+      <div class="card">
+        <h2>Update status</h2>
+        <div class="status-options">
+          @for (status of statuses; track status) {
+            <button
+              type="button"
+              class="status-option"
+              [class.status-option--active]="app.status === status"
+              (click)="setStatus(status)"
+            >{{ status.replace('-', ' ') }}</button>
+          }
+        </div>
+
+        <div class="field">
+          <label for="notes">Admin notes</label>
+          <textarea id="notes" class="input" rows="4" [(ngModel)]="notes" [ngModelOptions]="{ standalone: true }"></textarea>
+        </div>
+        <button type="button" class="btn btn--secondary btn--block" (click)="saveNotes()">
+          {{ saved() ? 'Saved ✓' : 'Save notes' }}
+        </button>
+
+        @if (app.reviewedAt) {
+          <p class="hint reviewed-hint">Last reviewed {{ app.reviewedAt | date: 'medium' }}</p>
+        }
+      </div>
+
+      <button type="button" class="btn btn--ghost btn--block danger-btn" (click)="remove()">
+        Delete application
+      </button>
+    </div>
+  </div>
+}

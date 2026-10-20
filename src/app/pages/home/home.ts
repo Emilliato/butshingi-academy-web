@@ -6,6 +6,7 @@ import { NewsService } from '../../core/services/news.service';
 import { RevealDirective } from '../../core/directives/reveal.directive';
 import { CountUpDirective } from '../../core/directives/count-up.directive';
 import { TEAM_MEMBERS } from '../../core/data/team';
+import { SHOW_LEADERSHIP_SECTION } from '../../core/config/feature-flags';
 
 interface Pillar {
   icon: string;
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
 
   readonly nextIntakeYear = new Date().getFullYear() + 1;
   readonly team = TEAM_MEMBERS;
+  readonly showLeadership = SHOW_LEADERSHIP_SECTION;
 
   readonly stats = [
     { value: 81, suffix: '', label: 'Learners supported each year' },

@@ -23,6 +23,10 @@
     <span class="value">{{ publishedCount() }}</span>
     <span class="label">Published news posts</span>
   </div>
+  <div class="stat-card">
+    <span class="value">{{ careers.pendingCount() }}</span>
+    <span class="label">Career applications awaiting review</span>
+  </div>
 </div>
 
 <div class="dash-grid">
@@ -78,6 +82,32 @@
       </table>
     } @else {
       <div class="empty-state"><p>No posts yet.</p></div>
+    }
+  </div>
+
+  <div class="table-card">
+    <div class="table-card__head">
+      <h2>Recent career applications</h2>
+      <a routerLink="/admin/careers">View all</a>
+    </div>
+    @if (recentCareers().length) {
+      <table class="data-table">
+        <thead>
+          <tr><th>Applicant</th><th>Position</th><th>Status</th><th>Submitted</th></tr>
+        </thead>
+        <tbody>
+          @for (app of recentCareers(); track app.id) {
+            <tr [routerLink]="['/admin/careers', app.id]" class="clickable-row">
+              <td>{{ app.fullName }}</td>
+              <td>{{ app.positionAppliedFor }}</td>
+              <td><span class="status-pill" [class]="'status-pill--' + app.status">{{ app.status.replace('-', ' ') }}</span></td>
+              <td>{{ app.submittedAt | date: 'mediumDate' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="empty-state"><p>No career applications yet.</p></div>
     }
   </div>
 </div>

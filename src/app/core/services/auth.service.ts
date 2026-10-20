@@ -35,6 +35,7 @@ export class AuthService {
   readonly isAuthenticated = computed(() => this.session() !== null);
   readonly currentUser = computed(() => this.session()?.user ?? null);
   readonly token = computed(() => this.session()?.token ?? null);
+  readonly role = computed(() => this.session()?.roleName ?? null);
 
   login(username: string, password: string): Observable<boolean> {
     return this.http.post<LoginResponseDto>(`${environment.apiUrl}/auth/login`, { username, password }).pipe(

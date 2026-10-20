@@ -42,27 +42,29 @@
   </div>
 </section>
 
-<section class="section team">
-  <div class="container team__head" appReveal>
-    <span class="eyebrow">Leadership</span>
-    <h2>The team behind it.</h2>
-    <p>A small, hands-on team of directors and leads accountable to the families we serve.</p>
-  </div>
+@if (showLeadership) {
+  <section class="section team">
+    <div class="container team__head" appReveal>
+      <span class="eyebrow">Leadership</span>
+      <h2>The team behind it.</h2>
+      <p>A small, hands-on team of directors and leads accountable to the families we serve.</p>
+    </div>
 
-  <div class="container team-photo" appReveal>
-    <img src="images/leadership-team.jpg" alt="S. Butshingi Academy directors and leadership team" loading="lazy" />
-  </div>
+    <div class="container team-photo" appReveal>
+      <img src="images/leadership-team.jpg" alt="S. Butshingi Academy directors and leadership team" loading="lazy" />
+    </div>
 
-  <div class="container team__grid stagger">
-    @for (person of team; track person.name; let i = $index) {
-      <div class="team-card" appReveal [revealDelay]="(i % 3) * 90">
-        <span class="team-card__avatar">{{ person.initials }}</span>
-        <h3>{{ person.name }}</h3>
-        <p>{{ person.role }}</p>
-      </div>
-    }
-  </div>
-</section>
+    <div class="container team__grid stagger">
+      @for (person of team; track person.name; let i = $index) {
+        <div class="team-card" appReveal [revealDelay]="(i % 3) * 90">
+          <span class="team-card__avatar">{{ person.initials }}</span>
+          <h3>{{ person.name }}</h3>
+          <p>{{ person.role }}</p>
+        </div>
+      }
+    </div>
+  </section>
+}
 
 <section class="section section--navy about-cta">
   <div class="container about-cta__grid" appReveal>

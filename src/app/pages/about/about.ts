@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { RevealDirective } from '../../core/directives/reveal.directive';
 import { TEAM_MEMBERS } from '../../core/data/team';
+import { SHOW_LEADERSHIP_SECTION } from '../../core/config/feature-flags';
 
 @Component({
   selector: 'app-about',
@@ -15,6 +16,7 @@ export class AboutComponent implements OnInit {
   private seo = inject(SeoService);
 
   readonly team = TEAM_MEMBERS;
+  readonly showLeadership = SHOW_LEADERSHIP_SECTION;
 
   readonly timeline = [
     { year: 'Founded', copy: 'Registered as an NPO (Reg 2020/119065/07) to serve learners in Mqonci, Chris Hani District.' },

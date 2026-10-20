@@ -1,0 +1,141 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Careers</span>
+    <h1>Join our team.</h1>
+    <p class="page-hero__lead">
+      We're always glad to hear from passionate tutors, educators and support staff who want
+      to help learners in Mqonci reach their full potential. Tell us about yourself below.
+    </p>
+    <p class="page-hero__note">
+      Applying to enrol a learner instead? Head to our <a routerLink="/admissions">Admissions page</a>.
+    </p>
+  </div>
+</section>
+
+<section class="section section--alt application">
+  <div class="container application__wrap">
+    @if (submitted(); as app) {
+      <div class="success-card" appReveal>
+        <span class="success-card__icon">✅</span>
+        <h2>Application received!</h2>
+        <p>
+          Thank you, {{ app.fullName }}. We've recorded your application for
+          <strong>{{ app.positionAppliedFor }}</strong>.
+        </p>
+        <div class="success-card__ref">
+          <span>Your reference number</span>
+          <strong>{{ app.referenceNumber }}</strong>
+        </div>
+        <p class="success-card__note">
+          Keep this reference handy — our team will be in touch on
+          <strong>{{ app.email }}</strong> / <strong>{{ app.phone }}</strong> if there's a match.
+        </p>
+        <div class="success-card__actions">
+          <a routerLink="/" class="btn btn--primary">Back to home</a>
+          <button type="button" class="btn btn--ghost" (click)="startNewApplication()">
+            Submit another application
+          </button>
+        </div>
+      </div>
+    } @else {
+      <form class="app-form" [formGroup]="form" (ngSubmit)="submit()" appReveal>
+        <h2>Tell us about yourself</h2>
+        <p class="app-form__lead">Fields marked * are required.</p>
+
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="grid-2">
+            <div class="field">
+              <label for="fullName">Full name *</label>
+              <input id="fullName" class="input" formControlName="fullName" />
+              @if (field('fullName').invalid && field('fullName').touched) {
+                <span class="error">Please enter your full name.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="email">Email address *</label>
+              <input id="email" type="email" class="input" formControlName="email" />
+              @if (field('email').invalid && field('email').touched) {
+                <span class="error">Please enter a valid email address.</span>
+              }
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="field">
+              <label for="phone">Phone number *</label>
+              <input id="phone" class="input" formControlName="phone" placeholder="073 587 5718" />
+              @if (field('phone').invalid && field('phone').touched) {
+                <span class="error">Please enter a valid phone number.</span>
+              }
+            </div>
+            <div class="field">
+              <label for="positionAppliedFor">Position applying for *</label>
+              <select id="positionAppliedFor" class="input" formControlName="positionAppliedFor">
+                <option value="" disabled>Select a position</option>
+                @for (position of positions; track position) {
+                  <option [value]="position">{{ position }}</option>
+                }
+              </select>
+              @if (field('positionAppliedFor').invalid && field('positionAppliedFor').touched) {
+                <span class="error">Please select a position.</span>
+              }
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="yearsOfExperience">Years of relevant experience</label>
+            <input id="yearsOfExperience" class="input" formControlName="yearsOfExperience" placeholder="e.g. 3 years" />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Cover letter &amp; CV</legend>
+          <div class="field">
+            <label for="coverLetter">Tell us why you'd be a great fit *</label>
+            <textarea id="coverLetter" class="input" formControlName="coverLetter" rows="5"></textarea>
+            <span class="hint">Minimum 30 characters.</span>
+            @if (field('coverLetter').invalid && field('coverLetter').touched) {
+              <span class="error">Please tell us a little more (at least 30 characters).</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="cvFile">Upload your CV *</label>
+            <input id="cvFile" type="file" class="input" accept=".pdf,.doc,.docx" (change)="onCvSelected($event)" />
+            <span class="hint">PDF or Word document, up to 5MB.</span>
+            @if (cvFile()) {
+              <span class="hint cv-selected">✓ {{ cvFile()!.name }}</span>
+            }
+            @if (cvError()) {
+              <span class="error">{{ cvError() }}</span>
+            }
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Consent &amp; declaration</legend>
+          <div class="field checkbox-field">
+            <label>
+              <input type="checkbox" formControlName="dataProcessingConsent" />
+              I consent to S. Butshingi Academy processing my personal information for the
+              purpose of this job application, in line with our
+              <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a>. *
+            </label>
+            @if (field('dataProcessingConsent').invalid && field('dataProcessingConsent').touched) {
+              <span class="error">This consent is required to submit an application.</span>
+            }
+          </div>
+        </fieldset>
+
+        @if (submitError()) {
+          <p class="error">{{ submitError() }}</p>
+        }
+
+        <button type="submit" class="btn btn--primary btn--block" [disabled]="submitting()">
+          {{ submitting() ? 'Submitting…' : 'Submit application' }}
+        </button>
+      </form>
+    }
+  </div>
+</section>

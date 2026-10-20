@@ -294,6 +294,104 @@ textarea.input { resize: vertical; min-height: 110px; }
 
 .page-hero h1 { max-width: 22ch; }
 .page-hero__lead { font-size: 1.08rem; max-width: 58ch; margin-top: 16px; }
+.page-hero__note { margin-top: 16px; font-size: 0.92rem; color: var(--text-muted); }
+.page-hero__note a { color: var(--color-navy); font-weight: 600; text-decoration: underline; }
+
+/* ---------- Application forms (shared by Admissions & Careers) ---------- */
+.application__wrap { max-width: 820px; margin-inline: auto; }
+
+.app-form {
+  background: var(--surface-alt);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 48px);
+  box-shadow: var(--shadow-soft);
+}
+
+.app-form__lead { font-size: 0.88rem; margin-bottom: 28px; }
+
+.app-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 32px;
+}
+
+.app-form legend {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-navy-dark);
+  margin-bottom: 18px;
+  padding: 0;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.checkbox-field label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.checkbox-field input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--color-navy); }
+
+.cv-selected { color: var(--color-navy); font-weight: 600; display: block; margin-top: 4px; }
+
+/* ---------- Success state (shared) ---------- */
+.success-card {
+  background: var(--surface-alt);
+  border-radius: var(--radius-lg);
+  padding: clamp(32px, 5vw, 56px);
+  text-align: center;
+  box-shadow: var(--shadow-lift);
+}
+
+.success-card__icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.success-card h2 { margin-bottom: 10px; }
+.success-card p { max-width: 48ch; margin-inline: auto; }
+
+.success-card__ref {
+  margin: 24px auto;
+  padding: 18px 28px;
+  border-radius: var(--radius-md);
+  background: var(--color-navy-tint);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.success-card__ref span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-navy-dark); }
+.success-card__ref strong { font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-navy-dark); }
+
+.success-card__note { font-size: 0.88rem; }
+
+.success-card__actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
 
 /* ---------- Admin panel shared UI ---------- */
 .admin-header {
@@ -378,6 +476,9 @@ textarea.input { resize: vertical; min-height: 110px; }
 .status-pill--accepted { background: var(--color-navy-tint); color: var(--color-navy-dark); }
 .status-pill--waitlisted { background: #F1E9FB; color: #6B3FA0; }
 .status-pill--declined { background: #FBE4E4; color: var(--color-danger); }
+.status-pill--shortlisted { background: #F1E9FB; color: #6B3FA0; }
+.status-pill--rejected { background: #FBE4E4; color: var(--color-danger); }
+.status-pill--hired { background: var(--color-navy-tint); color: var(--color-navy-dark); }
 
 .empty-state {
   text-align: center;
@@ -398,3 +499,129 @@ textarea.input { resize: vertical; min-height: 110px; }
 }
 .icon-btn:hover { background: rgba(28, 34, 51, 0.12); }
 .icon-btn--danger:hover { background: #FBE4E4; }
+
+.filters-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input { max-width: 320px; }
+
+.filter-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.admin-main .filter-chip {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(28, 34, 51, 0.14);
+  background: var(--surface-alt);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+}
+
+.admin-main .filter-chip:hover { border-color: var(--color-navy); }
+
+.admin-main .filter-chip--active {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-surface-soft);
+}
+
+.clickable-row { cursor: pointer; }
+
+.admin-main code {
+  background: rgba(28, 34, 51, 0.06);
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+}
+
+/* ---------- Admin detail pages (shared) ---------- */
+.admin-main .back-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin-bottom: 8px;
+}
+
+.status-pill--lg { font-size: 0.85rem; padding: 8px 18px; }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-section h2 { font-size: 1.05rem; margin-bottom: 16px; }
+.detail-section p { margin: 0; }
+
+.admin-main dl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.admin-main dl .span-2 { grid-column: 1 / -1; }
+.admin-main dt { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px; }
+.admin-main dd { margin: 0; font-weight: 500; }
+.admin-main dd a { color: var(--color-navy); font-weight: 600; }
+
+.detail-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+
+.detail-side h2 { font-size: 1rem; margin-bottom: 14px; }
+
+.status-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.status-option {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(28, 34, 51, 0.14);
+  background: var(--color-surface-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-option:hover { border-color: var(--color-navy); }
+.status-option--active { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-surface-soft); }
+
+.reviewed-hint { margin-top: 12px; }
+
+.danger-btn { color: var(--color-danger); border-color: rgba(192, 57, 43, 0.3); }
+.danger-btn:hover { background: #FBE4E4; border-color: var(--color-danger); color: var(--color-danger); }
+
+@media (max-width: 1000px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-side { position: static; }
+}
+
+@media (max-width: 560px) {
+  .admin-main dl { grid-template-columns: 1fr; }
+}

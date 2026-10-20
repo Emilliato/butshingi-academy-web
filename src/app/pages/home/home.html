@@ -71,64 +71,78 @@
     <h2>Sport, celebration and community.</h2>
   </div>
 
-  <div class="container life__grid">
-    <article class="life-card" appReveal>
-      <div class="life-card__media">
-        <img src="images/football-team.jpg" alt="The Academy football team on the field" loading="lazy" />
-      </div>
-      <div class="life-card__body">
+  <div class="container life__bento">
+    <article class="bento-card bento-card--a" appReveal>
+      <img src="images/football-team.jpg" alt="The Academy football team on the field" loading="lazy" />
+      <div class="bento-card__overlay">
         <span class="chip">Sport</span>
         <h3>Our football team</h3>
-        <p>The Academy football team builds the discipline, teamwork and belonging that show up directly in our attendance and retention figures.</p>
+        <p>Discipline, teamwork and belonging that show up directly in our attendance and retention figures.</p>
       </div>
     </article>
 
-    <article class="life-card" appReveal [revealDelay]="120">
-      <div class="life-card__media">
-        <img src="images/trophies.jpg" alt="Trophies and awards from S. Butshingi Academy" loading="lazy" />
-      </div>
-      <div class="life-card__body">
+    <article class="bento-card bento-card--b" appReveal [revealDelay]="90">
+      <img src="images/trophies.jpg" alt="Trophies and awards won by S. Butshingi Academy learners" loading="lazy" />
+      <div class="bento-card__overlay">
         <span class="chip chip--gold">Awards</span>
+        <h3>Achievements that add up</h3>
+        <p>From sport to academics, our trophy cabinet keeps growing alongside our learners.</p>
+      </div>
+    </article>
+
+    <article class="bento-card bento-card--c" appReveal [revealDelay]="150">
+      <img src="images/luncheon-certificate.jpg" alt="A learner receiving a certificate at the annual luncheon" loading="lazy" />
+      <div class="bento-card__overlay">
+        <span class="chip chip--gold">Luncheon</span>
         <h3>The annual luncheon</h3>
-        <p>Four annual luncheons hosted so far — certificates for top-performing learners, with families and community leaders sharing the moment.</p>
+      </div>
+    </article>
+
+    <article class="bento-card bento-card--d" appReveal [revealDelay]="210">
+      <img src="images/graduation-cake.jpg" alt="Celebrating a learner milestone with the school community" loading="lazy" />
+      <div class="bento-card__overlay">
+        <span class="chip">Milestones</span>
+        <h3>Celebrating together</h3>
       </div>
     </article>
   </div>
 </section>
 
-<section class="section section--alt team-teaser">
-  <div class="container team-teaser__head" appReveal>
-    <div>
-      <span class="eyebrow">Leadership</span>
-      <h2>The team behind the Academy.</h2>
+@if (showLeadership) {
+  <section class="section section--alt team-teaser">
+    <div class="container team-teaser__head" appReveal>
+      <div>
+        <span class="eyebrow">Leadership</span>
+        <h2>The team behind the Academy.</h2>
+      </div>
+      <a routerLink="/about" class="btn btn--ghost">Meet the full team</a>
     </div>
-    <a routerLink="/about" class="btn btn--ghost">Meet the full team</a>
-  </div>
 
-  <div class="container team-teaser__track">
-    <div class="team-teaser__grid stagger">
-      @for (person of team; track person.name; let i = $index) {
-        <div class="team-teaser__card" appReveal [revealDelay]="(i % 3) * 90">
-          <div class="team-teaser__card-photo">
-            @if (person.photo) {
-              <img [src]="person.photo" [alt]="person.name" loading="lazy" />
-            } @else {
-              <svg class="team-teaser__placeholder" viewBox="0 0 200 250" aria-hidden="true">
-                <circle cx="100" cy="95" r="42" />
-                <path d="M20 250c0-55 36-95 80-95s80 40 80 95" />
-              </svg>
-            }
+    <div class="container team-teaser__track">
+      <div class="team-teaser__grid stagger">
+        @for (person of team; track person.name; let i = $index) {
+          <div class="team-teaser__card" appReveal [revealDelay]="(i % 3) * 90">
+            <div class="team-teaser__card-photo">
+              @if (person.photo) {
+                <img [src]="person.photo" [alt]="person.name" loading="lazy" />
+              } @else {
+                <svg class="team-teaser__placeholder" viewBox="0 0 200 250" aria-hidden="true">
+                  <circle cx="100" cy="95" r="42" />
+                  <path d="M20 250c0-55 36-95 80-95s80 40 80 95" />
+                </svg>
+              }
+            </div>
+            <div class="team-teaser__card-body">
+              <h3>{{ person.name }}</h3>
+              <span class="team-teaser__card-role">{{ person.role }}</span>
+              <p>{{ person.bio }}</p>
+            </div>
           </div>
-          <div class="team-teaser__card-body">
-            <h3>{{ person.name }}</h3>
-            <span class="team-teaser__card-role">{{ person.role }}</span>
-            <p>{{ person.bio }}</p>
-          </div>
-        </div>
-      }
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+}
 
 @if (latestNews.length) {
   <section class="section section--alt news-teaser">

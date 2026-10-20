@@ -6,18 +6,14 @@
     </a>
 
     <nav class="admin-nav">
-      <a routerLink="/admin/dashboard" routerLinkActive="active">
-        <span class="ico">🏠</span> Dashboard
-      </a>
-      <a routerLink="/admin/news" routerLinkActive="active">
-        <span class="ico">📰</span> News
-      </a>
-      <a routerLink="/admin/applications" routerLinkActive="active">
-        <span class="ico">🎓</span> Applications
-        @if (applications.pendingCount() > 0) {
-          <span class="badge">{{ applications.pendingCount() }}</span>
-        }
-      </a>
+      @for (item of visibleNavItems(); track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active">
+          <span class="ico">{{ item.icon }}</span> {{ item.label }}
+          @if (item.badge && item.badge() > 0) {
+            <span class="badge">{{ item.badge() }}</span>
+          }
+        </a>
+      }
     </nav>
 
     <div class="admin-sidebar__footer">

@@ -1,0 +1,28 @@
+<section class="page-hero">
+  <div class="container" appReveal>
+    <span class="eyebrow">Learning resources</span>
+    <h1>Tutorials &amp; study videos.</h1>
+    <p class="page-hero__lead">
+      Video lessons and revision material from our educators — browse below, or open the
+      folder directly in Google Drive to download for offline viewing.
+    </p>
+    <a class="btn btn--ghost btn--sm" [href]="driveFolderUrl" target="_blank" rel="noopener">
+      Open in Google Drive ↗
+    </a>
+  </div>
+</section>
+
+<section class="section tutorials">
+  <div class="container tutorials__frame" appReveal>
+    <iframe
+      [src]="embedUrl"
+      title="S. Butshingi Academy tutorial videos"
+      loading="lazy"
+      allow="autoplay"
+    ></iframe>
+  </div>
+  <p class="container tutorials__hint">
+    Can't see the videos above? Some school networks block embedded Drive content —
+    <a [href]="driveFolderUrl" target="_blank" rel="noopener">open the folder directly</a> instead.
+  </p>
+</section>

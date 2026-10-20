@@ -23,7 +23,9 @@ export class SiteHeaderComponent {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Academics', path: '/academics' },
+    { label: 'Tutorials', path: '/tutorials' },
     { label: 'News', path: '/news' },
+    { label: 'Careers', path: '/careers' },
     { label: 'Contact', path: '/contact' },
   ];
 
