@@ -1,10 +1,6 @@
-.page-hero .btn { margin-top: 20px; }
-
 .tutorials__frame {
-  border-radius: var(--radius-lg);
+  padding: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  background: var(--surface-alt);
 }
 
 .tutorials__frame iframe {
@@ -16,13 +12,5 @@
 }
 
 .tutorials__hint {
-  margin-top: 20px;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.tutorials__hint a {
-  color: var(--color-navy);
-  font-weight: 600;
+  margin-top: 16px;
 }

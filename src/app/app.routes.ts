@@ -42,11 +42,6 @@ export const routes: Routes = [
         title: 'Careers · S. Butshingi Academy',
       },
       {
-        path: 'tutorials',
-        loadComponent: () => import('./pages/tutorials/tutorials').then((m) => m.TutorialsComponent),
-        title: 'Tutorials · S. Butshingi Academy',
-      },
-      {
         path: 'contact',
         loadComponent: () => import('./pages/contact/contact').then((m) => m.ContactComponent),
         title: 'Contact us · S. Butshingi Academy',
@@ -125,6 +120,11 @@ export const routes: Routes = [
             (m) => m.AdminCareerDetailComponent,
           ),
         title: 'Career application detail · Admin',
+      },
+      {
+        path: 'tutorials',
+        loadComponent: () => import('./pages/tutorials/tutorials').then((m) => m.TutorialsComponent),
+        title: 'Tutorials · Admin',
       },
     ],
   },

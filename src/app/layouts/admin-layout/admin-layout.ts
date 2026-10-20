@@ -47,6 +47,7 @@ export class AdminLayoutComponent {
       icon: '💼',
       badge: () => this.careers.pendingCount(),
     },
+    { path: '/admin/tutorials', label: 'Tutorials', icon: '🎬' },
   ];
 
   readonly visibleNavItems = computed(() => {
