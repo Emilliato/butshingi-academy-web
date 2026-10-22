@@ -14,16 +14,24 @@ export class AcademicsComponent implements OnInit {
   private seo = inject(SeoService);
 
   readonly phases = [
-    { name: 'FET / Matric Prep', grades: 'Grade 10 – 12', copy: 'Exam prep, extra lessons and university/TVET and career guidance for Matric success.' },
+    { name: 'Matric Rewrite', grades: 'Grade 12', copy: 'A second chance at Matric: rewrite your NSC subjects with focused tuition, exam preparation and university/TVET and career guidance.' },
   ];
 
   readonly subjects = [
-    { icon: '🔤', title: 'Literacy & Language', copy: 'Home language, English and reading programmes with dedicated library time.' },
-    { icon: '➗', title: 'Mathematics & Numeracy', copy: 'Structured maths support from foundation counting through to Matric-level problem solving.' },
-    { icon: '💻', title: 'Digital & ICT Skills', copy: 'Computer literacy, basic coding concepts and access to our digital learning lab.' },
-    { icon: '🌱', title: 'Life Skills & Leadership', copy: 'Leadership, financial literacy, career guidance and personal development.' },
-    { icon: '🎨', title: 'Creative Arts', copy: 'Music, art and performance opportunities woven into the weekly programme.' },
-    { icon: '⚽', title: 'Sport & Wellbeing', copy: 'Football and physical development that builds discipline, teamwork and belonging.' },
+    { icon: '➗', title: 'Mathematics', copy: 'Full Matric Mathematics tuition with past-paper practice.' },
+    { icon: '🔢', title: 'Mathematical Literacy', copy: 'Practical, real-world maths for the Matric rewrite.' },
+    { icon: '⚗️', title: 'Physical Science', copy: 'Physics and Chemistry, from theory to exam technique.' },
+    { icon: '🧬', title: 'Life Sciences', copy: 'Biology concepts, diagrams and exam-style questions.' },
+    { icon: '🌾', title: 'Agricultural Science', copy: 'Crop, animal and soil science for the NSC exam.' },
+    { icon: '🌍', title: 'Geography', copy: 'Physical and human geography, mapwork and GIS.' },
+    { icon: '📜', title: 'History', copy: 'Source-based analysis and essay writing.' },
+    { icon: '📊', title: 'Accounting', copy: 'Financial statements, ledgers and cost accounting.' },
+    { icon: '💼', title: 'Business Studies', copy: 'Business environments, operations and ventures.' },
+    { icon: '💹', title: 'Economics', copy: 'Micro and macroeconomics with exam practice.' },
+    { icon: '🔤', title: 'English Home Language', copy: 'Literature, language structures and writing skills.' },
+    { icon: '📖', title: 'English First Additional Language', copy: 'Reading, comprehension and writing for the NSC exam.' },
+    { icon: '🗣️', title: 'isiXhosa First Additional Language', copy: 'Language, literature and writing in isiXhosa.' },
+    { icon: '🌱', title: 'Life Orientation', copy: 'Life skills, careers and personal development.' },
   ];
 
   readonly supports = [
@@ -37,7 +45,7 @@ export class AcademicsComponent implements OnInit {
     this.seo.apply({
       title: 'Academics',
       description:
-        'Explore the FET / Matric Prep phase, subjects and academic support programmes offered at S. Butshingi Academy for Grade 10 to 12 learners.',
+        'S. Butshingi Academy offers Matric rewrite in all NSC subjects, including Mathematics, Physical Sciences, Life Sciences, Accounting and more, with academic support.',
       path: '/academics',
     });
   }
