@@ -37,19 +37,19 @@ export class HomeComponent implements OnInit {
   ];
 
   readonly pillars: Pillar[] = [
-    { icon: '📚', title: 'Educational Resources', copy: 'Textbooks, workbooks, stationery, teaching aids and library materials.' },
-    { icon: '💻', title: 'Digital Learning', copy: 'Computers, connectivity, digital platforms and basic ICT training.' },
-    { icon: '🧠', title: 'Academic Support', copy: 'Extra lessons, remedial support, exam prep and reading programmes.' },
-    { icon: '🍎', title: 'Teacher Development', copy: 'Classroom management, assessment and curriculum support training.' },
-    { icon: '🌱', title: 'Learner Development', copy: 'Life skills, leadership, career guidance and financial literacy.' },
-    { icon: '🏫', title: 'Infrastructure', copy: 'Classroom equipment, furniture, library and ICT facilities.' },
+    { icon: '📚', title: 'All Matric subjects', copy: 'Rewrite any of 14 NSC subjects, from Mathematics and Sciences to Accounting, languages and Life Orientation.' },
+    { icon: '📝', title: 'Exam preparation', copy: 'Past-paper practice, revision programmes and exam technique ahead of the NSC exams.' },
+    { icon: '🧠', title: 'Academic support', copy: 'Extra lessons, remedial support and reading programmes for learners who need more time.' },
+    { icon: '💻', title: 'Digital learning', copy: 'Computers, connectivity and digital platforms to study beyond the classroom.' },
+    { icon: '🌱', title: 'Career guidance', copy: 'University, TVET and career guidance, plus life skills, leadership and financial literacy.' },
+    { icon: '🏫', title: 'Resources & hostel', copy: 'Textbooks, workbooks and library materials, with optional boarding close to the Academy.' },
   ];
 
   ngOnInit(): void {
     this.seo.apply({
       title: 'S. Butshingi Academy — Mqonci, Eastern Cape',
       description:
-        "A community-rooted academy in Mqonci, Chris Hani District. Quality education, digital learning and learner development — building a better world, one student at a time.",
+        "A registered NPO in Mqonci, Chris Hani District offering Matric rewrite in all subjects, with exam preparation, academic support and career guidance.",
       path: '/',
     });
 
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
       '@type': 'School',
       name: 'S. Butshingi Academy',
       description:
-        'A community-rooted academy in Mqonci, Chris Hani District, Eastern Cape providing quality education, digital learning and learner development.',
+        'A registered NPO in Mqonci, Chris Hani District, Eastern Cape offering Matric rewrite in all subjects, with exam preparation and learner support.',
       url: 'https://sbutshingiacademy.co.za/',
       logo: 'https://sbutshingiacademy.co.za/images/logo.jpg',
       telephone: '+27735875718',

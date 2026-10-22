@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/services/seo.service';
 import { RevealDirective } from '../../core/directives/reveal.directive';
+import { MATRIC_SUBJECTS } from '../../core/data/subjects';
 
 @Component({
   selector: 'app-academics',
@@ -17,22 +18,7 @@ export class AcademicsComponent implements OnInit {
     { name: 'Matric Rewrite', grades: 'Grade 12', copy: 'A second chance at Matric: rewrite your NSC subjects with focused tuition, exam preparation and university/TVET and career guidance.' },
   ];
 
-  readonly subjects = [
-    { icon: '➗', title: 'Mathematics', copy: 'Full Matric Mathematics tuition with past-paper practice.' },
-    { icon: '🔢', title: 'Mathematical Literacy', copy: 'Practical, real-world maths for the Matric rewrite.' },
-    { icon: '⚗️', title: 'Physical Science', copy: 'Physics and Chemistry, from theory to exam technique.' },
-    { icon: '🧬', title: 'Life Sciences', copy: 'Biology concepts, diagrams and exam-style questions.' },
-    { icon: '🌾', title: 'Agricultural Science', copy: 'Crop, animal and soil science for the NSC exam.' },
-    { icon: '🌍', title: 'Geography', copy: 'Physical and human geography, mapwork and GIS.' },
-    { icon: '📜', title: 'History', copy: 'Source-based analysis and essay writing.' },
-    { icon: '📊', title: 'Accounting', copy: 'Financial statements, ledgers and cost accounting.' },
-    { icon: '💼', title: 'Business Studies', copy: 'Business environments, operations and ventures.' },
-    { icon: '💹', title: 'Economics', copy: 'Micro and macroeconomics with exam practice.' },
-    { icon: '🔤', title: 'English Home Language', copy: 'Literature, language structures and writing skills.' },
-    { icon: '📖', title: 'English First Additional Language', copy: 'Reading, comprehension and writing for the NSC exam.' },
-    { icon: '🗣️', title: 'isiXhosa First Additional Language', copy: 'Language, literature and writing in isiXhosa.' },
-    { icon: '🌱', title: 'Life Orientation', copy: 'Life skills, careers and personal development.' },
-  ];
+  readonly subjects = MATRIC_SUBJECTS;
 
   readonly supports = [
     { title: 'Extra lessons', copy: 'After-hours and weekend sessions in core subjects for learners who need extra time.' },

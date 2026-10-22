@@ -1,9 +1,9 @@
 <section class="page-hero">
   <div class="container" appReveal>
     <span class="eyebrow">Admissions</span>
-    <h1>Apply for the {{ nextIntakeYear }} intake.</h1>
+    <h1>Apply to rewrite your Matric — {{ nextIntakeYear }} intake.</h1>
     <p class="page-hero__lead">
-      Places are limited. Complete the form below and our admissions team will contact your
+      Places are limited. Choose your subjects, complete the form below and our admissions team will contact your
       guardian directly to confirm placement and next steps.
     </p>
     <p class="page-hero__note">
@@ -92,15 +92,15 @@
               </select>
             </div>
             <div class="field">
-              <label for="gradeApplyingFor">Grade applying for *</label>
+              <label for="gradeApplyingFor">Programme *</label>
               <select id="gradeApplyingFor" class="input" formControlName="gradeApplyingFor">
-                <option value="" disabled>Select a grade</option>
+                <option value="" disabled>Select a programme</option>
                 @for (grade of grades; track grade) {
                   <option [value]="grade">{{ grade }}</option>
                 }
               </select>
               @if (field('gradeApplyingFor').invalid && field('gradeApplyingFor').touched) {
-                <span class="error">Please select a grade.</span>
+                <span class="error">Please select a programme.</span>
               }
             </div>
           </div>
@@ -118,6 +118,34 @@
               <input id="previousSchool" class="input" formControlName="previousSchool" />
             </div>
           </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Matric rewrite subjects *</legend>
+          <p class="app-form__lead">Select every subject you want to rewrite.</p>
+          <div class="grid-2">
+            @for (subject of subjectOptions; track subject) {
+              <div class="field checkbox-field">
+                <label>
+                  <input
+                    type="checkbox"
+                    [checked]="selectedSubjects().includes(subject)"
+                    (change)="toggleSubject(subject)"
+                  />
+                  {{ subject }}
+                </label>
+              </div>
+            }
+          </div>
+          @if (subjectsTouched() && selectedSubjects().length === 0) {
+            <span class="error">Please select at least one subject.</span>
+          }
+          <p class="hint">
+            Estimated fees: R{{ registrationFee }} registration + R{{ feePerSubject }} per subject
+            = <strong>R{{ feeEstimate() }}</strong> for {{ selectedSubjects().length }}
+            subject{{ selectedSubjects().length === 1 ? '' : 's' }} (hostel is optional and extra).
+            See our <a routerLink="/fees">Fees page</a>.
+          </p>
         </fieldset>
 
         <fieldset>
