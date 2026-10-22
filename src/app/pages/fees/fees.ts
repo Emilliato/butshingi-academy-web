@@ -32,7 +32,7 @@ export class FeesComponent implements OnInit {
       label: 'Tuition',
       amount: 'R300',
       period: 'per subject',
-      note: 'Covers one subject of FET / Matric Prep tuition. Most learners take several subjects.',
+      note: 'Covers one Matric rewrite subject. Most learners take several subjects.',
     },
     {
       label: 'Hostel',
@@ -46,7 +46,7 @@ export class FeesComponent implements OnInit {
   ngOnInit(): void {
     this.seo.apply({
       title: 'Fees',
-      description: "S. Butshingi Academy's tuition, registration and optional hostel fees for FET / Matric Prep learners in Mqonci, Eastern Cape.",
+      description: "S. Butshingi Academy's tuition, registration and optional hostel fees for Matric rewrite learners in Mqonci, Eastern Cape.",
       path: '/fees',
     });
   }
