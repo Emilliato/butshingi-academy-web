@@ -27,6 +27,11 @@ export class RevealDirective implements AfterViewInit, OnDestroy {
       node.style.transitionDelay = `${this.revealDelay}ms`;
     }
 
+    // A fixed 15% threshold can never be met by an element taller than ~6x the viewport
+    // (e.g. the admissions form on a phone), so cap it by what the viewport can actually show.
+    const height = node.offsetHeight || 1;
+    const threshold = Math.min(0.15, (window.innerHeight * 0.5) / height);
+
     this.observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -36,7 +41,7 @@ export class RevealDirective implements AfterViewInit, OnDestroy {
           }
         }
       },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' },
+      { threshold, rootMargin: '0px 0px -60px 0px' },
     );
 
     this.observer.observe(node);
